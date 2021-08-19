@@ -1,0 +1,532 @@
+.container{
+  height: 100vh;
+  margin: 0 auto;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+.container section {
+  flex:1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.container section > div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 992px;
+  border-bottom: 1px solid var(--white);
+  padding: 4rem 0;
+  margin: 0 2rem;
+  width: 100%;
+}
+
+.homeContainer > div{
+  padding: 8rem 0 !important;
+}
+
+.homeContainer > div div:first-child{
+  margin-right: 1.5rem;
+}
+
+.homeContainer h1{
+  font-family: 'Rubik';
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.homeContainer h2{
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.homeContainer button{
+  width: 100%;
+  background: var(--red);
+  color: var(--white);
+  border: 0;
+  border-radius: 4px;
+
+  padding: 1rem 0;
+  font-family: 'Rubik';
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.aboutUsContainer{
+  background: linear-gradient(180deg, #283149 0%, #303B58 100%);
+}
+
+.aboutUsContainer > div {
+  flex-direction: column !important;
+}
+
+.aboutUsContainer > div h1 {
+  text-align: center;
+}
+.aboutUsContainer > div p {
+  margin-top: 2.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.aboutUsContainer > div img {
+  margin-top: 2.5rem;
+  width: 100%;
+}
+
+.teamContainer {
+  background: linear-gradient(180deg, #303B58 0%, #7A344F 47.92%, #AC2C4B 80%) no-repeat;
+  position: relative;
+}
+
+.teamContainer > img {
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+  z-index: 1;
+}
+
+.teamContainer > div  {
+  flex-direction: column !important;
+}
+
+.teamDivContainer  {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3rem;
+  margin-top: 2.5rem;
+  z-index: 2;
+}
+
+.teamDivContainer > div{
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
+}
+
+.teamDivContainer div strong{
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+} 
+
+.teamDivContainer div p{
+  text-align: center;
+  font-weight: 500;
+}
+
+.legendTeamContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.servicesContainer {
+  background:  linear-gradient(180deg, #303B58 0%, #7A344F 62.5%, #AC2C4B 100%);
+  transform: rotate(180deg);
+  position: relative;
+}
+
+.servicesContainer > img {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 0 ;
+  transform: rotate(180deg);
+}
+
+.servicesContainer > div  {
+  transform: rotate(180deg);
+  flex-direction: column !important;
+  flex: 1;
+  z-index: 3 ;
+}
+
+.servicesDivContainer {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1.5rem;
+  z-index: 3 ;
+}
+
+.servicesDivContainer > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 5rem;
+  background: rgba(118, 80, 97, 0.35);
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  border: 1px solid #7A344F;
+}
+
+
+.servicesDivContainer > div > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.servicesDivContainer > div > div > div > h1{
+  margin: 1.5rem 0;
+}
+
+.servicesDivContainer > div > div li{
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.servicesContainer  > div > div > button {
+  background: var(--red);
+  color: var(--white);
+  border: 0;
+  border-radius: 4px;
+
+  padding: 1rem 3rem;
+  margin-top: 4rem;
+  font-family: 'Rubik';
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.casesContainer{
+  position: initial;
+  background: #313a57;
+}
+
+.casesContainer > div{
+  flex:1;
+  display:flex;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.casesContainer > div video {
+  background: #404B69;
+  border: 5px solid #F73859;
+  margin-top: 2.5rem;
+  height: 436px;
+}
+
+.projectContainer {
+  background: linear-gradient(180deg, #F73859 -30.21%, #7A344F 32.86%, #303B58 100%);
+  transform: rotate(-180deg);
+  position: relative;
+}
+
+.projectContainer > div {
+  display:flex;
+  flex-direction: column !important;
+  transform: rotate(180deg);
+  flex: 1;
+  z-index: 1;
+  border: 0!important;
+}
+
+.projectContainer > img {
+  position: absolute;
+  z-index: 0;
+  
+  background-size: cover;
+  transform: rotate(180deg);
+  width: 100%;
+}
+
+.projectContainer > div > div {
+  width: 100%;
+}
+
+.projectDivContainer {
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  background: var(--white);
+  padding: 5rem 4rem;
+  margin-top: 2.5rem;
+  border-radius: 4px;
+
+  z-index: 1; 
+  width: 100%;
+}
+
+.projectDivContainer > div{
+  display: flex;
+  flex-direction: column !important;
+  width: 100%;
+}
+
+.projectDivContainer > div:first-child{
+  margin-right: 2.5rem;
+  padding-right: 2.5rem;
+  border-right: 1px solid var(--grey);
+
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projectDivContainer > div > div{
+  width: 100% !important;
+}
+
+.projectDivContainer > div > div img {
+  width: 100% !important;
+}
+
+.projectDivContainer > div h2{
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+
+.projectDivContainer > div h3{
+  color: #999;
+  margin-bottom: 0.5rem;
+}
+
+.projectDivContainer > div > form {
+  display: flex;
+  flex-direction: column !important;
+  color: var(--blue);
+}
+
+.projectDivContainer > div > form > label{
+  color: var(--blue-dark);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.projectDivContainer > div > form button{
+  background: var(--red);
+  color: var(--white);
+  border: 0;
+  border-radius: 4px;
+
+  align-self: flex-end;
+  padding: 1rem 2.5rem;
+  font-family: 'Rubik';
+  font-weight: 700;
+  font-size: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.projectDivContainer > div > form button[type='submit']{
+  margin-top: 1rem;
+}
+
+.buttonDivContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.buttonDivContainer button{
+  align-self: center  !important;
+  transition: opacity 0.5s;
+}
+
+.buttonDivContainer button:first-child{
+  margin-top: 0.5rem;
+  margin-right: 1.5rem;
+  background: transparent;
+  color: var(--blue-dark);
+  font-weight: 400;
+  padding:0;
+}
+
+.footerContainer > div {
+  flex: 1;
+  border: 1px solid transparent !important;
+  align-items: flex-start !important;
+  justify-content: space-between;
+}
+
+.footerDivContainer > div:first-child{
+  align-self: center;
+}
+
+.footerDivContainer > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerDivContainer > div > h4{
+  color: #933451;
+}
+
+.footerDivContainer > div > a {
+  margin-top: 1rem;
+}
+
+.footerDivContainer > div > div {
+  margin-top: 1rem;
+}
+
+.footerDivContainer > div > div a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footerDivContainer > div > div a svg{
+  margin-right: 0.5rem;
+}
+
+.footerDivContainer img {
+  width:100%;
+}
+
+.container footer > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 1rem 0;
+  background: #22293E;
+}
+
+
+@media (max-width: 950px) {
+  .servicesDivContainer > div > div li{
+    font-weight: 500;
+    
+  }
+
+  .homeContainer > div{
+    display: flex;
+    flex-direction: column-reverse !important;
+    text-align: center;
+  }
+
+  .homeContainer > div div:first-child{
+    margin:0;
+  }
+
+  .homeContainer > div div img{
+    width: 100%;
+  }
+
+  .teamDivContainer  {
+    display: grid !important;
+    flex: 1;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+    margin-top: 2.5rem;
+    z-index: 2;
+  } 
+
+  .teamDivContainer > div{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .teamDivContainer > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+  }
+
+  .teamDivContainer > div > div img{
+    height: 250px;
+  }
+
+  .legendTeamContainer{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+  }
+
+  .projectDivContainer{
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+  } 
+
+  .projectDivContainer > div:first-child{
+    border-bottom: 1px solid var(--grey);
+    border-right: 0;
+
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    margin-right: 0;
+
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .projectDivContainer > div h2{
+    text-align: center;
+  }
+
+  .projectDivContainer > div h3{
+    text-align: center;
+  }
+
+  .projectDivContainer > div > div {
+    display: flex;
+    justify-content: center;
+  }
+
+  .projectDivContainer > div > form button{
+    margin-top: 2rem;
+  }
+
+  .projectDivContainer > div > div img{
+    width: 100% !important;
+  }
+  
+  .footerDivContainer{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5rem;
+    row-gap: 2.5rem;
+  }
+
+  .footerDivContainer > div:first-child{
+    grid-column: span 2;
+    align-items: center;
+  }
+
+  .footerDivContainer > div h4{
+    text-align: center;
+  }
+
+  .footerDivContainer > div {
+    display: flex;    
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 860px) {
+  .servicesDivContainer{
+    grid-template-columns: 1fr;
+  }
+
+  .servicesDivContainer h1{
+    text-align: center;
+  }
+
+
+  .buttonDivContainer{
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 1rem;
+    
+  }
+
+  .buttonDivContainer button:first-child{
+    margin: 0;
+    margin-top: 1rem;
+  }
+
+}
