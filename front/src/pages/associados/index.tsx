@@ -86,7 +86,7 @@ function Associate() {
             <h3>Legenda</h3>
 
             <div>
-              <span><FaAddressCard size={20} />Número OAB</span>
+              <span><FaAddressCard size={20} />Registro de Associado</span>
               <span><FaCalendarAlt size={20} />Data de Associação</span>
               <span><FaPhoneAlt size={20} />Telefone</span>
               <span><FaEnvelope size={20} />Email</span>

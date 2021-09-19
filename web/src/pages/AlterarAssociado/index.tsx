@@ -70,8 +70,7 @@ const AlterarAssociado: React.FC = () => {
             .required('Estado é obrigatório'),
           cep: Yup.string()
             .required('CEP é obrigatório'),
-          oab: Yup.string()
-            .required('Número da OAB é obrigatório'),
+          oab: Yup.string(),
           cpf: Yup.string()
             .required('CPF obrigatório'),
           birthDate: Yup.string()
@@ -227,7 +226,7 @@ const AlterarAssociado: React.FC = () => {
 
             <h3>Dados Profissionais</h3>
 
-            <Input name="oab" label="Número OAB" />
+            <Input name="oab" label="Registro de Associado" />
 
             <div className="div_agroup">
               <Input name="profession" label="Profissão" />

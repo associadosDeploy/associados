@@ -252,7 +252,7 @@ const Associado: React.FC = () => {
                           <div>
                             <h3>Dados Profissionais</h3>
                             <span>
-                              Número OAB:
+                              Registro de Associado:
                               {associate.oab}
                             </span>
                             <span>

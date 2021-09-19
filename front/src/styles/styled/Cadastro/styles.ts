@@ -4,6 +4,10 @@ import { Content } from '../../../components/ContentMax/styles';
 
 export const MaxContent = styled(Content)`
   padding: 2rem 1rem;
+  
+  p{
+    margin-bottom: 1rem;
+  }
 `;
 
 export const FormContent = styled.div`
@@ -21,6 +25,15 @@ export const FormContent = styled.div`
       color: var(--light-black);
     }
 
+    p{
+      margin-top: 2rem;
+      text-align: justify;
+
+      a{
+        margin-left: 0.5rem;
+        color: blue;
+      }
+    }
     img{
       width: 30%;
       margin-bottom: 1rem;

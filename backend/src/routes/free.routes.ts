@@ -106,8 +106,8 @@ freeRouter.get('/associate/:id', async (request, response) => {
 });
 
 freeRouter.post('/associate', async (request, response) => {
+  let { oab } = request.body;
   const {
-    oab,
     state,
     city,
     cep,
@@ -134,6 +134,10 @@ freeRouter.post('/associate', async (request, response) => {
   const affiliation = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
 
   const associateRepository = getRepository(Associates);
+
+  if (!oab) {
+    oab = '';
+  }
 
   const associate = associateRepository.create({
     oab,

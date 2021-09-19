@@ -21,6 +21,10 @@ export const AboutUs = styled.div`
       font-size: 3rem;
     }
 
+    p{
+      text-align: justify;
+    }
+    
     video{
       width:100%;
       background: #eee;

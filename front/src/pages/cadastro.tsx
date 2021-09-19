@@ -30,8 +30,7 @@ function Course() {
             .required('Estado é obrigatório'),
           cep: Yup.string()
             .required('CEP é obrigatório'),
-          oab: Yup.string()
-            .required('Número da OAB é obrigatório'),
+          oab: Yup.string(),
           cpf: Yup.string()
             .required('CPF obrigatório'),
           birthDate: Yup.string()
@@ -96,12 +95,30 @@ function Course() {
 
       <MaxContent>
         {/* <BackButton /> */}
-
+        <p>
+          ANUIDADE VALOR:
+          À VISTA = R$ 500,00
+          PRAZO = 12 parcelas mensais de R$ 50,00
+        </p>
         <FormContent>
           {formComplete && (
             <div className="div_congratulations">
               <img src="congratulations.svg" alt="Congratulations" />
-              <h1>Seu cadastro foi realizado com sucesso !</h1>
+              <h2>Seu cadastro foi para a fase de análise!</h2>
+
+              <p>Para análise e aprovação, enviar os seguintes documentos para o e-mail
+                <a href="mailto:apjesc@gmail.com">apjesc@gmail.com</a>
+                <br />
+                - RG e CPF, ou CNH;
+                <br />
+                - Comprovante de Domicílio Profissional em Santa Catarina;
+                <br />
+                - Comprovante de Escolaridade;
+                <br />
+                - Comprovante de Especialidade ou Curso Livre na área de atuação pericial;
+                <br />
+                - Foto em formato 3x4, ser recente (registrada há no máximo 6 meses) e tirada de frente
+                contra um fundo branco e com iluminação uniforme</p>
             </div>
           )}
 
@@ -147,7 +164,7 @@ function Course() {
 
               <Input name="profession" label="Profissão" />
               <Input name="acting" label="Atuação" />
-              <Input name="oab" label="Número OAB" />
+              <Input name="oab" label="Registro de Associado (Não Obrigatório)" />
 
               <div className="div_agroup">
                 <Input name="education" label="Escolaridade" />
