@@ -76,8 +76,10 @@ export const Associated = styled.div`
       color: #555;
 
       img{
-        width: 350px;
-        height: 350px;
+        min-width: 200px;
+        max-width: 200px;
+        min-height: 315px;
+        max-height: 315px;
         transition: opacity 0.5s;
       }
 

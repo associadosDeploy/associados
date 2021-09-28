@@ -17,11 +17,11 @@ const Footer: React.FC = () => {
 
           <div>
             <span>MENU</span>
-            <Link href="#sobre">
+            <Link href="/#sobre">
               <a>Sobre</a>
             </Link>
 
-            <Link href="#parceiros">
+            <Link href="/#parceiros">
               <a>Parceiros</a>
             </Link>
 
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
               <a>Cursos</a>
             </Link>
 
-            <Link href="#contato">
+            <Link href="/#contato">
               <a>Contato</a>
             </Link>
           </div>
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
         </MaxContent>
       </TopFooter>
       <BottomFooter>
-        <span>COPYRIGHT © 2020 CODE LABZ</span>
+        <span>COPYRIGHT © 2021 CODE LABZ</span>
       </BottomFooter>
     </Container>
   );

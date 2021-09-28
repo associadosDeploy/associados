@@ -1,4 +1,7 @@
 import React from 'react';
+
+import Head from 'next/head';
+
 import { useRouter } from 'next/router'
 
 import MenuBar from '../../components/MenuBar';
@@ -21,6 +24,12 @@ function Course<CourseProp>({ course }) {
 
   return (
     <>
+      <Head>
+        <title>APJESC - {course.title}</title>
+
+        <meta name="description" content={`APJESC - Curso ${course.title}`} />
+        <meta property="og:title" content={`APJESC - Curso ${course.title}`} />
+      </Head>
       <MenuBar />
       <MaxContent>
         <Title title="Dados do Curso" />

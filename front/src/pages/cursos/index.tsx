@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Head from 'next/head';
 import MenuBar from '../../components/MenuBar';
 
 import Title from '../../components/Title';
@@ -20,6 +21,13 @@ function Course<CourseProp>({ courses }) {
 
   return (
     <ContentContainer>
+      <Head>
+        <title>APJESC - Cursos</title>
+
+        <meta name="description" content="APJESC - Listagem de cursos" />
+        <meta property="og:title" content="APJESC - Listagem de cursos" />
+      </Head>
+
       <MenuBar />
 
       <MaxContent>

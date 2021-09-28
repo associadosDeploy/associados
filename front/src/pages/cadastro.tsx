@@ -1,5 +1,7 @@
 import React, { useRef, useCallback, useState } from 'react';
 
+import Head from 'next/head';
+
 import MenuBar from '../components/MenuBar';
 
 import * as Yup from 'yup';
@@ -91,6 +93,12 @@ function Course() {
 
   return (
     <>
+      <Head>
+        <title>APJESC - Cadastro de Associados</title>
+
+        <meta name="description" content="APJESC - Cadastro de Associados" />
+        <meta property="og:title" content="APJESC - Cadastro de Associados" />
+      </Head>
       <MenuBar />
 
       <MaxContent>

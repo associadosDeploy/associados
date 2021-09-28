@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
+import Head from 'next/head';
+import Image from 'next/image'
+import Link from 'next/link';
+
 import MenuBar from '../../components/MenuBar';
 import Loading from '../../components/Loading';
 import Title from '../../components/Title';
 import Footer from '../../components/Footer';
-import Link from 'next/link';
+
 import api from '../../services/api';
 
 import { MaxContent, Associated, SearchBar, ContentContainer } from '../../styles/styled/Associados/styles';
 
-import { FaAddressCard, FaCalendarAlt, FaPhoneAlt, FaEnvelope, FaBook, FaSearch } from 'react-icons/fa';
+import { FaAddressCard, FaCalendarAlt, FaPhoneAlt, FaEnvelope, FaBook, FaSearch, FaUserTie } from 'react-icons/fa';
 
 interface AssociateProps {
   id: string,
@@ -71,6 +75,13 @@ function Associate() {
   useEffect(() => { }, [])
   return (
     <ContentContainer>
+      <Head>
+        <title>APJESC - Associados</title>
+
+        <meta name="description" content="APJESC - Lista de associados" />
+        <meta property="og:title" content="APJESC - Lista de associados" />
+      </Head>
+
       <MenuBar />
 
       <MaxContent>
@@ -107,7 +118,13 @@ function Associate() {
                   <div>
 
                     <div>
-                      <img src={associate.avatar} alt="logo" />
+                      {associate.avatar ? (
+                        <img src={associate.avatar} alt={associate.name} /> 
+                      ) : (
+                        <div className="image-not-found">
+                          <FaUserTie size={50} />
+                        </div>
+                      )}
                     </div>
 
                     <div>

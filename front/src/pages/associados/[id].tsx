@@ -1,4 +1,6 @@
 import React from 'react';
+import Head from 'next/head';
+
 import { useRouter } from 'next/router'
 
 import MenuBar from '../../components/MenuBar';
@@ -47,6 +49,12 @@ function Associate<AssociateProps>({ associate }) {
 
   return (
     <>
+      <Head>
+        <title>{`APJESC - ${associate.name}`}</title>
+
+        <meta name="description" content={`APJESC - ${associate.name}`} />
+        <meta property="og:title" content={`APJESC - ${associate.name}`} />
+      </Head>
       <MenuBar />
 
       <MaxContent>

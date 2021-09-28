@@ -91,7 +91,7 @@ export const Associated = styled.div`
 
   > div {
     display: flex;
-    
+    width: 100%;
     margin: 1rem 0;
     cursor: pointer;
     box-shadow: -4px 5px 5px rgba(0, 0, 0, 0.10);
@@ -102,11 +102,26 @@ export const Associated = styled.div`
       justify-content:center;
       color: #555;
 
-      img{
-        /* height: 250px;
-        width: 250px; */
+      img {
+        min-width: 200px;
+        max-width: 200px;
+        min-height: 315px;
+        max-height: 315px;
         background-size: cover;
         transition: opacity 0.5s;
+        margin: 0;
+      }
+
+      div.image-not-found {
+        min-width: 200px;
+        max-width: 200px;
+        min-height: 315px;
+        max-height: 315px;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #eee;
       }
 
       h1 {

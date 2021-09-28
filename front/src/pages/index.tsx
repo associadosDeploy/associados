@@ -1,21 +1,27 @@
 import React from 'react';
 
-import MenuBar from '../components/MenuBar';
-
-import Banner from '../components/Banner';
-
 import Link from 'next/link';
+import Head from 'next/head';
 
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+
+import MenuBar from '../components/MenuBar';
+import Banner from '../components/Banner';
 import Footer from '../components/Footer';
 
 import { AboutUs, MaxContent, Partners, PartnersCarousel, Partner, Associated, FormAssociated } from '../styles/styled/Home/styles';
-
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 function Home() {
 
   return (
     <>
+      <Head>
+        <title>APJESC - Associação de Peritos Judiciais do Estado de Santa Catarina</title>
+
+        <meta name="description" content="APJESC - Associação de Peritos Judiciais do Estado de Santa Catarina." />
+        <meta property="og:title" content="APJESC - Associação de Peritos Judiciais do Estado de Santa Catarina." />
+      </Head>
+
       <MenuBar />
       <Banner />
 

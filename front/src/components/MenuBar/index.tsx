@@ -35,7 +35,7 @@ const MenuBar: React.FC = () => {
             <a>Cursos</a>
           </Link>
 
-          <Link href="#contato">
+          <Link href="/#contato">
             <a>Contato</a>
           </Link>
 
