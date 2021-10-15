@@ -84,13 +84,25 @@ export const Partners = styled.div`
   font-weight:bold;
   width:100%;
   background: #eee;
-  padding: 2rem 0;
 
   h1{
     color: var(--dark-yellow);
     text-align:center;
     margin-bottom: 1rem;
     font-size: 2rem;
+  }
+
+  img{
+    width: 200px;
+    height: 200px;
+  }
+  
+  img:hover{
+    opacity: 0.8;
+  }
+
+  .semParceiro{
+    background: #C4C4C4;
   }
 
   .partners_tablet{
@@ -177,8 +189,11 @@ export const PartnersCarousel = styled.div`
 `;
 
 export const Partner = styled.div`
-  padding: 5rem;
-  background: #C4C4C4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  
+  
 `;
 
 export const Associated = styled.div`

@@ -52,10 +52,11 @@ function Home() {
             </div>
 
             <div className="content_carousel">
-              <Partner>Entre em contato</Partner>
-              <Partner>Entre em contato</Partner>
-              <Partner>Entre em contato</Partner>
-              <Partner>Entre em contato</Partner>
+              <Partner>
+                <a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
+              <Partner className="semParceiro">Entre em contato</Partner>
+              <Partner className="semParceiro">Entre em contato</Partner>
+              <Partner className="semParceiro">Entre em contato</Partner>
             </div>
 
             <div>
@@ -69,9 +70,10 @@ function Home() {
             </div>
 
             <div>
-              <Partner>Entre em contato</Partner>
-              <Partner>Entre em contato</Partner>
-              <Partner>Entre em contato</Partner>
+              <Partner>
+                <a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
+              <Partner className="semParceiro">Entre em contato</Partner>
+              <Partner className="semParceiro">Entre em contato</Partner>
             </div>
 
             <div>
@@ -85,7 +87,8 @@ function Home() {
             </div>
 
             <div>
-              <Partner>Entre em contato</Partner>
+              <Partner>
+                <a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
             </div>
 
             <div>

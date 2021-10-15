@@ -95,7 +95,8 @@ export const Associated = styled.div`
     margin: 1rem 0;
     cursor: pointer;
     box-shadow: -4px 5px 5px rgba(0, 0, 0, 0.10);
-
+    width: 100%;
+    
     > div {
       display: flex;
       flex-direction: column;
@@ -139,7 +140,8 @@ export const Associated = styled.div`
           flex-direction: row;
           align-items:center;
           width:100%;
-
+          word-break: break-all;
+          
           svg {
             margin-right: 0.5rem;
           }
@@ -207,7 +209,8 @@ export const Associated = styled.div`
 
     >div{
       display: flex;
-      flex-direction:row;
+      flex-direction:column;
+      width: 100%;
 
      >div{
        flex:1;
