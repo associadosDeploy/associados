@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Link from 'next/link';
 import Head from 'next/head';
@@ -12,7 +12,7 @@ import Footer from '../components/Footer';
 import { AboutUs, MaxContent, Partners, PartnersCarousel, Partner, Associated, FormAssociated } from '../styles/styled/Home/styles';
 
 function Home() {
-
+  const [indexSelect, setIndexSelect] = useState(0);
   return (
     <>
       <Head>
@@ -54,7 +54,7 @@ function Home() {
             <div className="content_carousel">
               <Partner>
                 <a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
-              <Partner className="semParceiro">Entre em contato</Partner>
+              <Partner><a href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></a></Partner>
               <Partner className="semParceiro">Entre em contato</Partner>
               <Partner className="semParceiro">Entre em contato</Partner>
             </div>
@@ -72,7 +72,7 @@ function Home() {
             <div>
               <Partner>
                 <a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
-              <Partner className="semParceiro">Entre em contato</Partner>
+              <Partner><a href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></a></Partner>
               <Partner className="semParceiro">Entre em contato</Partner>
             </div>
 
@@ -82,16 +82,21 @@ function Home() {
           </PartnersCarousel>
 
           <PartnersCarousel className="partners_mobile">
-            <div>
+            <div onClick={() => setIndexSelect(indexSelect - 1)}>
               <FaAngleLeft color="#A78B3D" size={40} />
             </div>
 
             <div>
-              <Partner>
-                <a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
+              {indexSelect === 0 && (
+                <Partner><a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
+              )}
+
+              {indexSelect > 0 && (
+                <Partner><a href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></a></Partner>
+              )}
             </div>
 
-            <div>
+            <div onClick={() => setIndexSelect(indexSelect + 1)}>
               <FaAngleRight color="#A78B3D" size={40} />
             </div>
           </PartnersCarousel>
