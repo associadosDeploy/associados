@@ -18,8 +18,11 @@ function Home() {
       <Head>
         <title>APJESC - Associação de Peritos Judiciais do Estado de Santa Catarina</title>
 
-        <meta name="description" content="APJESC - Associação de Peritos Judiciais do Estado de Santa Catarina." />
         <meta property="og:title" content="APJESC - Associação de Peritos Judiciais do Estado de Santa Catarina." />
+        <meta name="description" content="Somos uma associação que nasceu com intuito de representar e valorizar o ofício do perito catarinense de maneira igualitária e apartidária em todas as suas atuações e em caráter especial, junto ao poder judiciário e as outras entidades que necessitem de serviços profissionais nas áreas específicas de cada associado.
+              Peritos Especialistas em diversas áreas do conhecimento, ávidos por aprimoramento, e comprometidos com a ética na atuação e em sua representatividade.
+              Somos uma congregação de profissionais atuantes na esfera judicial engajados e motivados em normatizar nossa atuação no Estado de Santa Catarina e no Brasil."></meta>
+        <meta name="keywords" content="Advogados, Associação de Peritos Judiciais, Santa Catarina"></meta>
       </Head>
 
       <MenuBar />
@@ -55,7 +58,7 @@ function Home() {
               <Partner>
                 <a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
               <Partner><a href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></a></Partner>
-              <Partner className="semParceiro">Entre em contato</Partner>
+              <Partner className="semParceiro"> <a href="http://www.criminalistica2022.com.br/"><img src="parceiro.png" alt="Parceiro 3" /></a></Partner>
               <Partner className="semParceiro">Entre em contato</Partner>
             </div>
 
@@ -73,7 +76,7 @@ function Home() {
               <Partner>
                 <a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
               <Partner><a href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></a></Partner>
-              <Partner className="semParceiro">Entre em contato</Partner>
+              <Partner className="semParceiro"> <a href="http://www.criminalistica2022.com.br/"><img src="parceiro.png" alt="Parceiro 3" /></a></Partner>
             </div>
 
             <div>
@@ -91,8 +94,11 @@ function Home() {
                 <Partner><a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
               )}
 
-              {indexSelect > 0 && (
+              {indexSelect === 1 && (
                 <Partner><a href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></a></Partner>
+              )}
+              {indexSelect === 2 && (
+                <Partner className="semParceiro"> <a href="http://www.criminalistica2022.com.br/"><img src="parceiro.png" alt="Parceiro 3" /></a></Partner>
               )}
             </div>
 

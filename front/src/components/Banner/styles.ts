@@ -8,6 +8,10 @@ export const Container = styled.div`
   background: #060606;
   color: #666;
 
+  .button_content{
+    margin: 0 1rem;
+  }
+
   img{
     cursor:pointer;
     width:100%;
@@ -18,9 +22,6 @@ export const Container = styled.div`
     opacity: 0.9;
   }
   
-  .banner_web{
-    width:100%;
-  }
   
   .banner_mob{
     display:none;
