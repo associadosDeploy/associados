@@ -113,7 +113,7 @@ function Home() {
 
         <FormAssociated>
           <h1>Quero ser um associado</h1>
-          <img src="ilustracao.png" alt="ilustracao" />
+          <img src="CARTEIRA_ILUSTRACAO.png" alt="ilustracao" />
           <p>Se você tem interrese de se tornar um associado, clique no botão abaixo e responda o formulário</p>
 
           <Link href="cadastro">

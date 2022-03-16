@@ -104,9 +104,7 @@ function Course() {
       <MaxContent>
         {/* <BackButton /> */}
         <p>
-          ANUIDADE VALOR:
-          À VISTA = R$ 500,00
-          PRAZO = 12 parcelas mensais de R$ 50,00
+          Inscrição R$ 200,00 e Anuidade R$ 400,00 proporcional ao mês de ingresso parcelado na quantidade de meses restantes do ano.
         </p>
         <FormContent>
           {formComplete && (

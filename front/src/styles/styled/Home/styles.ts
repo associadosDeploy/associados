@@ -221,6 +221,7 @@ export const FormAssociated = styled.div`
 
   img{
     margin: 3rem 0;
+    width: 100%;
   }
 
   p{
