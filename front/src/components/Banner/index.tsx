@@ -8,11 +8,11 @@ const MenuBar: React.FC = () => {
   const [indexBanner, setIndexBanner] = useState(0);
 
   const banners = [
-    {
-      img: "banner2.png",
-      imgCel: "banner2_cel.png",
-      link: "http://www.criminalistica2022.com.br/"
-    },
+    // {
+    //   img: "banner2.png",
+    //   imgCel: "banner2_cel.png",
+    //   link: "http://www.criminalistica2022.com.br/"
+    // },
     {
       img: "banner.jpg",
       imgCel: "banner_cel.jpg",

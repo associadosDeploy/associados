@@ -39,6 +39,10 @@ const MenuBar: React.FC = () => {
             <a>Contato</a>
           </Link>
 
+          <Link href="honorarios.pdf">
+            <a>Honorários</a>
+          </Link>
+
           <Link href="https://admin.apjesc.com.br/">
             <div className="login_button">
               <span>Entrar</span>
@@ -76,6 +80,10 @@ const MenuBar: React.FC = () => {
 
                 <Link href="#contato">
                   <a>Contato</a>
+                </Link>
+
+                <Link href="honorarios.pdf">
+                  <a>Honorários</a>
                 </Link>
               </div>
 
