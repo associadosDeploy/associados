@@ -58,7 +58,7 @@ function Home() {
               <Partner>
                 <a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
               <Partner><a href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></a></Partner>
-              <Partner className="semParceiro"> <a href="http://www.criminalistica2022.com.br/"><img src="parceiro.png" alt="Parceiro 3" /></a></Partner>
+              <Partner> <a href="https://instagram.com/zenatti.consultoriapericial?igshid=OGQ5ZDc2ODk2ZA=="><img src="parceiro3.jpeg" alt="Parceiro 3" /></a></Partner>
               <Partner className="semParceiro">Entre em contato</Partner>
             </div>
 
@@ -76,7 +76,7 @@ function Home() {
               <Partner>
                 <a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
               <Partner><a href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></a></Partner>
-              <Partner className="semParceiro"> <a href="http://www.criminalistica2022.com.br/"><img src="parceiro.png" alt="Parceiro 3" /></a></Partner>
+              <Partner className="semParceiro"> <a href="https://instagram.com/zenatti.consultoriapericial?igshid=OGQ5ZDc2ODk2ZA=="><img src="parceiro3.jpeg" alt="Parceiro 3" /></a></Partner>
             </div>
 
             <div>
@@ -98,7 +98,7 @@ function Home() {
                 <Partner><a href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></a></Partner>
               )}
               {indexSelect === 2 && (
-                <Partner className="semParceiro"> <a href="http://www.criminalistica2022.com.br/"><img src="parceiro.png" alt="Parceiro 3" /></a></Partner>
+                <Partner> <a href="https://instagram.com/zenatti.consultoriapericial?igshid=OGQ5ZDc2ODk2ZA=="><img src="parceiro3.jpeg" alt="Parceiro 3" /></a></Partner>
               )}
             </div>
 
