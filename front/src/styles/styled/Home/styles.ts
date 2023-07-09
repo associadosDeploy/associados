@@ -47,7 +47,7 @@ export const AboutUs = styled.div`
 
       font-size: 1.5rem;
       font-weight: bold;
-      background: #eee;
+      background: #fafafa;
     }
   }
   

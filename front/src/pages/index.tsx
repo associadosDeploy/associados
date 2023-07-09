@@ -39,7 +39,7 @@ function Home() {
           </div>
 
           <div>
-            Em breve
+            <img src="../logo2.png" alt="logo" />
             {/* <video src="">em breve</video> */}
           </div>
         </MaxContent>
