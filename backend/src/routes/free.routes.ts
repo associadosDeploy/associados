@@ -8,6 +8,10 @@ import AppError from '../errors/AppError';
 
 const freeRouter = Router();
 
+freeRouter.get('/healthcheck', async (request, response) => {
+  return response.status(200).json({ ok: true });
+});
+
 freeRouter.get('/associate', async (request, response) => {
   const { name } = request.query;
   const associatesRepository = getRepository(Associates);
