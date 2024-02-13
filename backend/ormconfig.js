@@ -7,9 +7,7 @@ module.exports = {
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
-  ssl: {
-    ca: process.env.POSTGRES_URL_NO_SSL,
-  },
+  ssl: { rejectUnauthorized: false },
   entities: [
     './src/models/*.ts'
   ],
