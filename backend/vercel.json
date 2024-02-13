@@ -2,16 +2,16 @@
   "version": 2,
   "builds": [
     {
-      "src": "./dist/server.js",
+      "src": "server.js",
       "use": "@now/node"
     }
   ],
-   "routes": [
+  "routes": [
     {
       // Specify which paths will route to a destination using a regex
       "src": "/(.*)",
       // Specify the paths' destination
-      "dest": "./dist/server.js"
+      "dest": "server.js"
     }
   ]
 }
