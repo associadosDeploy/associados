@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request } from 'express';
 import { getRepository } from 'typeorm';
 
 import multer from 'multer';
@@ -9,6 +9,12 @@ import Associate from '../models/Associates';
 import UpdateAssociateAvatarService from '../services/UpdateAssociateAvatarService';
 
 import AppError from '../errors/AppError';
+
+interface RequestWithUser extends Request {
+  user: {
+    id: string;
+  };
+}
 
 const associatesRouter = Router();
 const upload = multer(uploadConfig);
@@ -57,7 +63,7 @@ associatesRouter.get('/find/:id', async (request, response) => {
   });
 });
 
-associatesRouter.put('/approve/:id', async (request, response) => {
+associatesRouter.put('/approve/:id', async (request:RequestWithUser, response) => {
   const { id } = request.params;
   const { valid } = request.body;
   const associateRepository = getRepository(Associate);

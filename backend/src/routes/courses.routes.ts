@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request } from 'express';
 import { getRepository } from 'typeorm';
 
 import multer from 'multer';
@@ -11,6 +11,13 @@ import UpdateCourseAvatarService from '../services/UpdateCourseAvatarService';
 
 const coursesRouter = Router();
 const upload = multer(uploadConfig);
+
+interface RequestWithUser extends Request {
+  user: {
+    id: string;
+  };
+}
+
 
 coursesRouter.get('/', async (request, response) => {
   const coursesRepository = getRepository(Courses);
@@ -61,7 +68,7 @@ coursesRouter.get('/find/:id', async (request, response) => {
   });
 });
 
-coursesRouter.post('/', upload.single('avatar'), async (request, response) => {
+coursesRouter.post('/', upload.single('avatar'), async (request:RequestWithUser, response) => {
   const { link, title, description } = request.body;
   const avatar = request.file.filename;
   const coursesRepository = getRepository(Courses);
