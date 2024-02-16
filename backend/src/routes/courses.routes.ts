@@ -1,4 +1,4 @@
-import { Router, Request,Response } from 'express';
+import { Router, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 
 import multer from 'multer';
@@ -13,13 +13,12 @@ const coursesRouter = Router();
 const upload = multer(uploadConfig);
 
 interface RequestWithUser extends Request {
-  user: {
+  user?: {
     id: string;
   };
 }
 
-
-coursesRouter.get('/', async (request:RequestWithUser, response:Response) => {
+coursesRouter.get('/', async (request, response: Response) => {
   const coursesRepository = getRepository(Courses);
 
   const courses = await coursesRepository.find();
@@ -39,7 +38,7 @@ coursesRouter.get('/', async (request:RequestWithUser, response:Response) => {
   return response.json(courseWithUrlAvatar);
 });
 
-coursesRouter.get('/:id', async (request:RequestWithUser, response:Response) => {
+coursesRouter.get('/:id', async (request, response: Response) => {
   const { id } = request.params;
   const coursesRepository = getRepository(Courses);
 
@@ -52,7 +51,7 @@ coursesRouter.get('/:id', async (request:RequestWithUser, response:Response) => 
   response.json(checkCoursesExists);
 });
 
-coursesRouter.get('/find/:id', async (request:RequestWithUser, response:Response) => {
+coursesRouter.get('/find/:id', async (request, response: Response) => {
   const { id } = request.params;
   const coursesRepository = getRepository(Courses);
 
@@ -68,69 +67,83 @@ coursesRouter.get('/find/:id', async (request:RequestWithUser, response:Response
   });
 });
 
-coursesRouter.post('/', upload.single('avatar'), async (request:RequestWithUser, response:Response) => {
-  const { link, title, description } = request.body;
-  const avatar = request.file.filename;
-  const coursesRepository = getRepository(Courses);
+coursesRouter.post(
+  '/',
+  upload.single('avatar'),
+  async (request: RequestWithUser, response: Response) => {
+    const { link, title, description } = request.body;
+    const avatar = request.file.filename;
+    const coursesRepository = getRepository(Courses);
 
-  const courses = coursesRepository.create({
-    link,
-    title,
-    description,
-    avatar,
-    user_id: request.user.id,
-  });
+    if (!request.user) {
+      throw new AppError('User not found');
+    }
 
-  await coursesRepository.save(courses);
+    const courses = coursesRepository.create({
+      link,
+      title,
+      description,
+      avatar,
+      user_id: request.user.id,
+    });
 
-  return response.json(courses);
-});
+    await coursesRepository.save(courses);
 
-coursesRouter.put('/:id', async (request:RequestWithUser, response:Response) => {
-  const { id } = request.params;
-  const { link, title, description } = request.body;
+    return response.json(courses);
+  },
+);
 
-  const coursesRepository = getRepository(Courses);
+coursesRouter.put(
+  '/:id',
+  async (request: RequestWithUser, response: Response) => {
+    const { id } = request.params;
+    const { link, title, description } = request.body;
 
-  const checkCourseExists = await coursesRepository.findOne({
-    where: { id },
-  });
+    const coursesRepository = getRepository(Courses);
 
-  if (!checkCourseExists) {
-    throw new AppError('Associate not found');
-  }
+    const checkCourseExists = await coursesRepository.findOne({
+      where: { id },
+    });
 
-  const courses = coursesRepository.save({
-    id,
-    link,
-    title,
-    description,
-  });
+    if (!checkCourseExists) {
+      throw new AppError('Associate not found');
+    }
 
-  return response.json(courses);
-});
+    const courses = coursesRepository.save({
+      id,
+      link,
+      title,
+      description,
+    });
 
-coursesRouter.delete('/:id', async (request:RequestWithUser, response:Response) => {
-  const { id } = request.params;
+    return response.json(courses);
+  },
+);
 
-  const coursesRepository = getRepository(Courses);
+coursesRouter.delete(
+  '/:id',
+  async (request: RequestWithUser, response: Response) => {
+    const { id } = request.params;
 
-  const course = await coursesRepository.findOne({
-    where: { id },
-  });
+    const coursesRepository = getRepository(Courses);
 
-  if (!course) {
-    throw new AppError('Course not found.');
-  }
+    const course = await coursesRepository.findOne({
+      where: { id },
+    });
 
-  await coursesRepository.remove(course);
+    if (!course) {
+      throw new AppError('Course not found.');
+    }
 
-  return response.status(204).send();
-});
+    await coursesRepository.remove(course);
+
+    return response.status(204).send();
+  },
+);
 coursesRouter.patch(
   '/avatar',
   upload.single('avatar'),
-  async (request:RequestWithUser, response:Response) => {
+  async (request: RequestWithUser, response: Response) => {
     const { id } = request.body;
     const updateCourseAvatar = new UpdateCourseAvatarService();
 

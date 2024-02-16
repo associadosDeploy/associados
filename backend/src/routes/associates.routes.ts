@@ -1,4 +1,4 @@
-import { Router, Request, Reponse } from 'express';
+import { Router, Request } from 'express';
 import { getRepository } from 'typeorm';
 
 import multer from 'multer';
@@ -11,7 +11,7 @@ import UpdateAssociateAvatarService from '../services/UpdateAssociateAvatarServi
 import AppError from '../errors/AppError';
 
 interface RequestWithUser extends Request {
-  user: {
+  user?: {
     id: string;
   };
 }
@@ -19,7 +19,7 @@ interface RequestWithUser extends Request {
 const associatesRouter = Router();
 const upload = multer(uploadConfig);
 
-associatesRouter.get('/', async (request:RequestWithUser, response:Response) => {
+associatesRouter.get('/', async (request, response) => {
   const associateRepository = getRepository(Associate);
 
   const associates = await associateRepository.find();
@@ -27,7 +27,7 @@ associatesRouter.get('/', async (request:RequestWithUser, response:Response) => 
   response.json(associates);
 });
 
-associatesRouter.get('/valid', async (request:RequestWithUser, response:Response) => {
+associatesRouter.get('/valid', async (request, response) => {
   const associateRepository = getRepository(Associate);
 
   const associates = await associateRepository.find({ where: { valid: 0 } });
@@ -35,7 +35,7 @@ associatesRouter.get('/valid', async (request:RequestWithUser, response:Response
   response.json(associates);
 });
 
-associatesRouter.get('/filter', async (request:RequestWithUser, response:Response) => {
+associatesRouter.get('/filter', async (request, response) => {
   const { visible, valid } = request.query;
   const associateRepository = getRepository(Associate);
   const newVisible = Boolean(Number(visible));
@@ -47,7 +47,7 @@ associatesRouter.get('/filter', async (request:RequestWithUser, response:Respons
   response.json(associates);
 });
 
-associatesRouter.get('/find/:id', async (request:RequestWithUser, response:Response) => {
+associatesRouter.get('/find/:id', async (request, response) => {
   const { id } = request.params;
   const associateRepository = getRepository(Associate);
 
@@ -63,31 +63,38 @@ associatesRouter.get('/find/:id', async (request:RequestWithUser, response:Respo
   });
 });
 
-associatesRouter.put('/approve/:id', async (request:RequestWithUser, response:Response) => {
-  const { id } = request.params;
-  const { valid } = request.body;
-  const associateRepository = getRepository(Associate);
+associatesRouter.put(
+  '/approve/:id',
+  async (request: RequestWithUser, response) => {
+    const { id } = request.params;
+    const { valid } = request.body;
+    const associateRepository = getRepository(Associate);
 
-  const checkAssociateExists = await associateRepository.findOne({
-    where: { id },
-  });
+    if (!request.user) {
+      throw new AppError('User not found');
+    }
 
-  if (!checkAssociateExists) {
-    throw new AppError('Associate not found');
-  }
+    const checkAssociateExists = await associateRepository.findOne({
+      where: { id },
+    });
 
-  const associate = {
-    ...checkAssociateExists,
-    valid,
-    user_id: request.user.id,
-  };
+    if (!checkAssociateExists) {
+      throw new AppError('Associate not found');
+    }
 
-  await associateRepository.save(associate);
+    const associate = {
+      ...checkAssociateExists,
+      valid,
+      user_id: request.user.id,
+    };
 
-  return response.json(associate);
-});
+    await associateRepository.save(associate);
 
-associatesRouter.put('/visible/:id', async (request:RequestWithUser, response:Response) => {
+    return response.json(associate);
+  },
+);
+
+associatesRouter.put('/visible/:id', async (request, response) => {
   const { id } = request.params;
   const { visible } = request.body;
 
@@ -111,7 +118,7 @@ associatesRouter.put('/visible/:id', async (request:RequestWithUser, response:Re
   return response.json(associate);
 });
 
-associatesRouter.put('/:id', async (request:RequestWithUser, response:Response) => {
+associatesRouter.put('/:id', async (request, response) => {
   const { id } = request.params;
 
   const {
@@ -183,7 +190,7 @@ associatesRouter.put('/:id', async (request:RequestWithUser, response:Response) 
 associatesRouter.patch(
   '/avatar',
   upload.single('avatar'),
-  async (request:RequestWithUser, response:Response) => {
+  async (request, response) => {
     const { id } = request.body;
     const updateCourseAvatar = new UpdateAssociateAvatarService();
 

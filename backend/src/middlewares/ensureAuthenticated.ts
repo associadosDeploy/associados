@@ -10,7 +10,7 @@ interface TokenPayload {
 }
 
 interface RequestNew extends Request {
-  user: { id: string };
+  user?: { id: string };
 }
 export default function ensureAuthenticated(
   request: RequestNew,

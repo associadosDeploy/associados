@@ -1,4 +1,4 @@
-import { Router,Request,Response } from 'express';
+import { Router, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 
 import Courses from '../models/Course';
@@ -8,11 +8,11 @@ import AppError from '../errors/AppError';
 
 const freeRouter = Router();
 
-freeRouter.get('/healthcheck', async (request:Request, response:Response) => {
+freeRouter.get('/healthcheck', async (request: Request, response: Response) => {
   return response.status(200).json({ ok: true });
 });
 
-freeRouter.get('/associate', async (request:Request, response:Response) => {
+freeRouter.get('/associate', async (request: Request, response: Response) => {
   const { name } = request.query;
   const associatesRepository = getRepository(Associates);
 
@@ -43,7 +43,7 @@ freeRouter.get('/associate', async (request:Request, response:Response) => {
   return response.json(associateWithUrlAvatar);
 });
 
-freeRouter.get('/course', async (request:Request, response:Response) => {
+freeRouter.get('/course', async (request: Request, response: Response) => {
   const coursesRepository = getRepository(Courses);
 
   const courses = await coursesRepository.find();
@@ -63,7 +63,7 @@ freeRouter.get('/course', async (request:Request, response:Response) => {
   return response.json(courseWithUrlAvatar);
 });
 
-freeRouter.get('/course/:id', async (request:Request, response:Response) => {
+freeRouter.get('/course/:id', async (request: Request, response: Response) => {
   const { id } = request.params;
 
   if (!id) {
@@ -86,30 +86,33 @@ freeRouter.get('/course/:id', async (request:Request, response:Response) => {
   });
 });
 
-freeRouter.get('/associate/:id', async (request:Request, response:Response) => {
-  const { id } = request.params;
-  const associateRepository = getRepository(Associates);
-  if (!id) {
-    throw new AppError('Need id to continue');
-  }
+freeRouter.get(
+  '/associate/:id',
+  async (request: Request, response: Response) => {
+    const { id } = request.params;
+    const associateRepository = getRepository(Associates);
+    if (!id) {
+      throw new AppError('Need id to continue');
+    }
 
-  const checkAssociateExists = await associateRepository.findOne({
-    where: { id },
-  });
+    const checkAssociateExists = await associateRepository.findOne({
+      where: { id },
+    });
 
-  if (!checkAssociateExists) {
-    throw new AppError('Course not found');
-  }
+    if (!checkAssociateExists) {
+      throw new AppError('Course not found');
+    }
 
-  response.json({
-    ...checkAssociateExists,
-    avatar: checkAssociateExists.avatar
-      ? `${process.env.APP_URL}/files/${checkAssociateExists.avatar}`
-      : null,
-  });
-});
+    response.json({
+      ...checkAssociateExists,
+      avatar: checkAssociateExists.avatar
+        ? `${process.env.APP_URL}/files/${checkAssociateExists.avatar}`
+        : null,
+    });
+  },
+);
 
-freeRouter.post('/associate', async (request:Request, response:Response) => {
+freeRouter.post('/associate', async (request: Request, response: Response) => {
   let { oab } = request.body;
   const {
     state,
