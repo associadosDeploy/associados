@@ -1,7 +1,6 @@
 require('dotenv/config');
-import {createConnection} from "typeorm";
 
-createConnection({
+module.exports = {
   type: 'postgres',
   host: process.env.POSTGRES_HOST,
   port: 5432,
@@ -19,6 +18,4 @@ createConnection({
   cli: {
     migrationsDir: './src/database/migrations'
   }
-}).then(connection => {
-  // aqui vai o resto do seu código
-}).catch(error => console.log(error));
+}
