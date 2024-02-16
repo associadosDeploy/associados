@@ -6,6 +6,7 @@ import associatesRouter from './associates.routes';
 import coursesRouter from './courses.routes';
 import freeRouter from './free.routes';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import { Request, Response, NextFunction } from 'express';
 
 const routes = Router();
 
@@ -13,7 +14,7 @@ routes.use('/users', usersRouter);
 routes.use('/session', sessionsRouter);
 routes.use('/free', freeRouter);
 
-routes.use((request, response, next) => {
+routes.use((request:Request, response:Response, next:NextFunction) => {
   ensureAuthenticated(request, response, next);
 });
 

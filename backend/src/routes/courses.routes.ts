@@ -1,4 +1,4 @@
-import { Router, Request } from 'express';
+import { Router, Request,Response } from 'express';
 import { getRepository } from 'typeorm';
 
 import multer from 'multer';
@@ -19,7 +19,7 @@ interface RequestWithUser extends Request {
 }
 
 
-coursesRouter.get('/', async (request, response) => {
+coursesRouter.get('/', async (request:RequestWithUser, response:Response) => {
   const coursesRepository = getRepository(Courses);
 
   const courses = await coursesRepository.find();
@@ -39,7 +39,7 @@ coursesRouter.get('/', async (request, response) => {
   return response.json(courseWithUrlAvatar);
 });
 
-coursesRouter.get('/:id', async (request, response) => {
+coursesRouter.get('/:id', async (request:RequestWithUser, response:Response) => {
   const { id } = request.params;
   const coursesRepository = getRepository(Courses);
 
@@ -52,7 +52,7 @@ coursesRouter.get('/:id', async (request, response) => {
   response.json(checkCoursesExists);
 });
 
-coursesRouter.get('/find/:id', async (request, response) => {
+coursesRouter.get('/find/:id', async (request:RequestWithUser, response:Response) => {
   const { id } = request.params;
   const coursesRepository = getRepository(Courses);
 
@@ -68,7 +68,7 @@ coursesRouter.get('/find/:id', async (request, response) => {
   });
 });
 
-coursesRouter.post('/', upload.single('avatar'), async (request:RequestWithUser, response) => {
+coursesRouter.post('/', upload.single('avatar'), async (request:RequestWithUser, response:Response) => {
   const { link, title, description } = request.body;
   const avatar = request.file.filename;
   const coursesRepository = getRepository(Courses);
@@ -86,7 +86,7 @@ coursesRouter.post('/', upload.single('avatar'), async (request:RequestWithUser,
   return response.json(courses);
 });
 
-coursesRouter.put('/:id', async (request, response) => {
+coursesRouter.put('/:id', async (request:RequestWithUser, response:Response) => {
   const { id } = request.params;
   const { link, title, description } = request.body;
 
@@ -110,7 +110,7 @@ coursesRouter.put('/:id', async (request, response) => {
   return response.json(courses);
 });
 
-coursesRouter.delete('/:id', async (request, response) => {
+coursesRouter.delete('/:id', async (request:RequestWithUser, response:Response) => {
   const { id } = request.params;
 
   const coursesRepository = getRepository(Courses);
@@ -130,7 +130,7 @@ coursesRouter.delete('/:id', async (request, response) => {
 coursesRouter.patch(
   '/avatar',
   upload.single('avatar'),
-  async (request, response) => {
+  async (request:RequestWithUser, response:Response) => {
     const { id } = request.body;
     const updateCourseAvatar = new UpdateCourseAvatarService();
 

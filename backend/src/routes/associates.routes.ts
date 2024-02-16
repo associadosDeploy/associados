@@ -1,4 +1,4 @@
-import { Router, Request } from 'express';
+import { Router, Request, Reponse } from 'express';
 import { getRepository } from 'typeorm';
 
 import multer from 'multer';
@@ -19,7 +19,7 @@ interface RequestWithUser extends Request {
 const associatesRouter = Router();
 const upload = multer(uploadConfig);
 
-associatesRouter.get('/', async (request, response) => {
+associatesRouter.get('/', async (request:RequestWithUser, response:Response) => {
   const associateRepository = getRepository(Associate);
 
   const associates = await associateRepository.find();
@@ -27,7 +27,7 @@ associatesRouter.get('/', async (request, response) => {
   response.json(associates);
 });
 
-associatesRouter.get('/valid', async (request, response) => {
+associatesRouter.get('/valid', async (request:RequestWithUser, response:Response) => {
   const associateRepository = getRepository(Associate);
 
   const associates = await associateRepository.find({ where: { valid: 0 } });
@@ -35,7 +35,7 @@ associatesRouter.get('/valid', async (request, response) => {
   response.json(associates);
 });
 
-associatesRouter.get('/filter', async (request, response) => {
+associatesRouter.get('/filter', async (request:RequestWithUser, response:Response) => {
   const { visible, valid } = request.query;
   const associateRepository = getRepository(Associate);
   const newVisible = Boolean(Number(visible));
@@ -47,7 +47,7 @@ associatesRouter.get('/filter', async (request, response) => {
   response.json(associates);
 });
 
-associatesRouter.get('/find/:id', async (request, response) => {
+associatesRouter.get('/find/:id', async (request:RequestWithUser, response:Response) => {
   const { id } = request.params;
   const associateRepository = getRepository(Associate);
 
@@ -63,7 +63,7 @@ associatesRouter.get('/find/:id', async (request, response) => {
   });
 });
 
-associatesRouter.put('/approve/:id', async (request:RequestWithUser, response) => {
+associatesRouter.put('/approve/:id', async (request:RequestWithUser, response:Response) => {
   const { id } = request.params;
   const { valid } = request.body;
   const associateRepository = getRepository(Associate);
@@ -87,7 +87,7 @@ associatesRouter.put('/approve/:id', async (request:RequestWithUser, response) =
   return response.json(associate);
 });
 
-associatesRouter.put('/visible/:id', async (request, response) => {
+associatesRouter.put('/visible/:id', async (request:RequestWithUser, response:Response) => {
   const { id } = request.params;
   const { visible } = request.body;
 
@@ -111,7 +111,7 @@ associatesRouter.put('/visible/:id', async (request, response) => {
   return response.json(associate);
 });
 
-associatesRouter.put('/:id', async (request, response) => {
+associatesRouter.put('/:id', async (request:RequestWithUser, response:Response) => {
   const { id } = request.params;
 
   const {
@@ -183,7 +183,7 @@ associatesRouter.put('/:id', async (request, response) => {
 associatesRouter.patch(
   '/avatar',
   upload.single('avatar'),
-  async (request, response) => {
+  async (request:RequestWithUser, response:Response) => {
     const { id } = request.body;
     const updateCourseAvatar = new UpdateAssociateAvatarService();
 

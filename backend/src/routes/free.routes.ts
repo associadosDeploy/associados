@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router,Request,Response } from 'express';
 import { getRepository } from 'typeorm';
 
 import Courses from '../models/Course';
@@ -8,11 +8,11 @@ import AppError from '../errors/AppError';
 
 const freeRouter = Router();
 
-freeRouter.get('/healthcheck', async (request, response) => {
+freeRouter.get('/healthcheck', async (request:Request, response:Response) => {
   return response.status(200).json({ ok: true });
 });
 
-freeRouter.get('/associate', async (request, response) => {
+freeRouter.get('/associate', async (request:Request, response:Response) => {
   const { name } = request.query;
   const associatesRepository = getRepository(Associates);
 
@@ -43,7 +43,7 @@ freeRouter.get('/associate', async (request, response) => {
   return response.json(associateWithUrlAvatar);
 });
 
-freeRouter.get('/course', async (request, response) => {
+freeRouter.get('/course', async (request:Request, response:Response) => {
   const coursesRepository = getRepository(Courses);
 
   const courses = await coursesRepository.find();
@@ -63,7 +63,7 @@ freeRouter.get('/course', async (request, response) => {
   return response.json(courseWithUrlAvatar);
 });
 
-freeRouter.get('/course/:id', async (request, response) => {
+freeRouter.get('/course/:id', async (request:Request, response:Response) => {
   const { id } = request.params;
 
   if (!id) {
@@ -86,7 +86,7 @@ freeRouter.get('/course/:id', async (request, response) => {
   });
 });
 
-freeRouter.get('/associate/:id', async (request, response) => {
+freeRouter.get('/associate/:id', async (request:Request, response:Response) => {
   const { id } = request.params;
   const associateRepository = getRepository(Associates);
   if (!id) {
@@ -109,7 +109,7 @@ freeRouter.get('/associate/:id', async (request, response) => {
   });
 });
 
-freeRouter.post('/associate', async (request, response) => {
+freeRouter.post('/associate', async (request:Request, response:Response) => {
   let { oab } = request.body;
   const {
     state,
