@@ -9,6 +9,10 @@ import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 const routes = Router();
 
+freeRouter.get('/', async (request, response) => {
+  return response.status(200).json({ ok: true });
+});
+
 routes.use('/users', usersRouter);
 routes.use('/session', sessionsRouter);
 routes.use('/free', freeRouter);
