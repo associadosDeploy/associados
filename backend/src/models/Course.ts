@@ -6,12 +6,13 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinColumn,
+  BaseEntity,
 } from 'typeorm';
 
 import User from './User';
 
 @Entity('course')
-class Course {
+class Course extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
