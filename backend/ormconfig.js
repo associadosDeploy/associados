@@ -8,6 +8,7 @@ module.exports = {
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
   ssl: { rejectUnauthorized: false },
+  synchronize: true,
   entities: [
     './src/models/*.ts'
   ],
