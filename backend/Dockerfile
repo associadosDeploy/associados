@@ -1,15 +1,15 @@
-FROM node:lts-alpine
+# FROM node:lts-alpine
 
-WORKDIR /usr/api
+# WORKDIR /usr/api
 
-RUN npm install pm2 -g
+# RUN npm install pm2 -g
 
-COPY package.json yarn.* ormconfig.js tsconfig.json .env ./
+# COPY package.json yarn.* ormconfig.js tsconfig.json .env ./
 
-RUN yarn
+# RUN yarn
 
-COPY . ./
+# COPY . ./
 
-EXPOSE 3333
+# EXPOSE 3333
 
-CMD ["pm2-runtime", "process.yml"]
+# CMD ["pm2-runtime", "process.yml"]

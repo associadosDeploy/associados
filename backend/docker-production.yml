@@ -1,15 +1,15 @@
-version: '3'
+# version: '3'
 
-services:
-  api:
-    labels:
-      - 'traefik.enable=true'
-      - 'traefik.frontend.rule=Host:api.apjesc.com.br'
+# services:
+#   api:
+#     labels:
+#       - 'traefik.enable=true'
+#       - 'traefik.frontend.rule=Host:api.apjesc.com.br'
 
-  reverse-proxy:
-    image: traefik:v1.7
-    command: --api --docker.exposedbydefault=false
-    ports:
-      - '80:80'
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+#   reverse-proxy:
+#     image: traefik:v1.7
+#     command: --api --docker.exposedbydefault=false
+#     ports:
+#       - '80:80'
+#     volumes:
+#       - /var/run/docker.sock:/var/run/docker.sock
