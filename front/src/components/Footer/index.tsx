@@ -18,44 +18,44 @@ const Footer: React.FC = () => {
           <div>
             <span>MENU</span>
             <Link href="/#sobre">
-              <a>Sobre</a>
+              Sobre
             </Link>
 
             <Link href="/#parceiros">
-              <a>Parceiros</a>
+             Parceiros
             </Link>
 
             <Link href="/associados">
-              <a>Associados</a>
+            Associados
             </Link>
 
             <Link href="/cursos">
-              <a>Cursos</a>
+              Cursos
             </Link>
 
             <Link href="/#contato">
-              <a>Contato</a>
+             Contato
             </Link>
           </div>
 
           <div id="contato">
             <span>CONTATO</span>
-            <a href="">
+            <Link href="">
               <FaEnvelope size={20} />
               APJESC@gmail.com
-            </a>
-            <a href="https://www.linkedin.com/in/apjesc-associa%C3%A7%C3%A3o-de-peritos-b90141211/">
+            </Link>
+            <Link href="https://www.linkedin.com/in/apjesc-associa%C3%A7%C3%A3o-de-peritos-b90141211/">
               <FaLinkedin size={20} />
               Linkedin
-            </a>
-            <a href="https://www.facebook.com/106455424929511/posts/106459201595800/?substory_index=0">
+            </Link>
+            <Link href="https://www.facebook.com/106455424929511/posts/106459201595800/?substory_index=0">
               <FaFacebook size={20} />
               Facebook
-            </a>
-            <a href="https://www.instagram.com/apjesc/?igshid=1azw0ub0ri53b">
+            </Link>
+            <Link href="https://www.instagram.com/apjesc/?igshid=1azw0ub0ri53b">
               <FaInstagram size={20} />
               Instagram
-            </a>
+            </Link>
           </div>
         </MaxContent>
       </TopFooter>
@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
         <div>
           <span>© {new Date().getFullYear()} APEJESC - Todos os direitos reservados</span>
 
-          <a href="https://www.codelabz.com.br/" style={{ 
+          <Link href="https://www.codelabz.com.br/" style={{ 
             display: 'flex', 
             alignItems: 'center',
             gap: 4, 
@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
           
           }}>
             Desenvolvido por : <img src="codelabz.svg" alt="codelabz" />
-          </a>
+          </Link>
         </div>
       </BottomFooter>
     </Container>

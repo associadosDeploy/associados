@@ -1,21 +1,25 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-import { ServerStyleSheet } from 'styled-components';
+// import { ServerStyleSheet } from 'styled-components';
 
 interface Props {
   styleTags: any
 }
 
 export default class MyDocument extends Document<Props> {
-  // static getInitialProps({ renderPage }) {
+  // static getInitialProps({ renderPage }:any) {
+  //   // Step 1: Create an instance of ServerStyleSheet
   //   const sheet = new ServerStyleSheet();
 
-  //   const page = renderPage((App) => (props) =>
+  //   // Step 2: Retrieve styles from components in the page
+  //   const page = renderPage((App:any) => (props:any) =>
   //     sheet.collectStyles(<App {...props} />),
   //   );
 
+  //   // Step 3: Extract the styles as <style> tags
   //   const styleTags = sheet.getStyleElement();
 
+  //   // Step 4: Pass styleTags as a prop
   //   return { ...page, styleTags };
   // }
 
@@ -33,6 +37,7 @@ export default class MyDocument extends Document<Props> {
         <body>
           <Main />
           <NextScript />
+          <script src="https://unpkg.com/styled-components/dist/styled-components.min.js"></script>
         </body>
       </Html>
     );

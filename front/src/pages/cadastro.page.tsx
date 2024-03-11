@@ -15,6 +15,7 @@ import { FormHandles } from '@unform/core';
 import { MaxContent, FormContent } from '../styles/styled/Cadastro/styles';
 import getValidationErrors from '../utils/getValidationErrors';
 import api from '../services/api';
+import Link from 'next/link';
 
 function Course() {
   const formRef = useRef<FormHandles>(null);
@@ -113,7 +114,7 @@ function Course() {
               <h2>Seu cadastro foi para a fase de análise!</h2>
 
               <p>Para análise e aprovação, enviar os seguintes documentos para o e-mail
-                <a href="mailto:apjesc@gmail.com">apjesc@gmail.com</a>
+                <Link href="mailto:apjesc@gmail.com">apjesc@gmail.com</Link>
                 <br />
                 - RG e CPF, ou CNH;
                 <br />

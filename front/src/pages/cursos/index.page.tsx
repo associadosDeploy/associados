@@ -8,6 +8,7 @@ import Footer from '../../components/Footer';
 
 import { MaxContent, Courses, ContentContainer } from '../../styles/styled/Cursos/styles';
 import api from '../../services/api';
+import Link from 'next/link';
 
 interface CourseProps {
   id: string;
@@ -52,7 +53,7 @@ function Course<CourseProp>({ courses }:any) {
                 <div>
                   <h1>{course.title}</h1>
                   <p>{course.description}</p>
-                  <a href={`cursos/${course.id}`}>Ver Cursos</a>
+                  <Link href={`cursos/${course.id}`}>Ver Cursos</Link>
                 </div>
               </div>
             ))

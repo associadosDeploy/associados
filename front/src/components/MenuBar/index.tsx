@@ -20,27 +20,27 @@ const MenuBar: React.FC = () => {
 
         <div className="div_menu_web">
           <Link href="/#sobre">
-            <a>Sobre</a>
+            Sobre
           </Link>
 
           <Link href="/#parceiros">
-            <a>Parceiros</a>
+            Parceiros
           </Link>
 
           <Link href="/associados">
-            <a>Associados</a>
+           Associados
           </Link>
 
           <Link href="/cursos">
-            <a>Cursos</a>
+            Cursos
           </Link>
 
           <Link href="/#contato">
-            <a>Contato</a>
+           Contato
           </Link>
 
           <Link href="honorarios.pdf">
-            <a>Honorários</a>
+            Honorários
           </Link>
 
           <Link href="https://admin.apjesc.com.br/">
@@ -58,32 +58,32 @@ const MenuBar: React.FC = () => {
 
             <div>
               <div>
-                <a>
+                
                   <FaBars size={25} onClick={() => setOpen(!open)} />
-                </a>
+                
 
                 <Link href="/#sobre">
-                  <a>Sobre</a>
+                  Sobre
                 </Link>
 
                 <Link href="/#parceiros">
-                  <a>Parceiros</a>
+                  Parceiros
                 </Link>
 
                 <Link href="/associados">
-                  <a>Associados</a>
+                  Associados
                 </Link>
 
                 <Link href="/cursos">
-                  <a>Cursos</a>
+                  Cursos
                 </Link>
 
                 <Link href="#contato">
-                  <a>Contato</a>
+                  Contato
                 </Link>
 
                 <Link href="honorarios.pdf">
-                  <a>Honorários</a>
+                  Honorários
                 </Link>
               </div>
 

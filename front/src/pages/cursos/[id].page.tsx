@@ -11,6 +11,7 @@ import Title from '../../components/Title';
 
 import { MaxContent, Courses } from '../../styles/styled/Curso/styles';
 import api from '../../services/api';
+import Link from 'next/link';
 
 interface CourseProps {
   id: string;
@@ -45,7 +46,7 @@ function Course<CourseProp>({ course }:any) {
               <p>{course.description}</p>
 
               <div>
-                Acesse por <a href={course.link}>Link</a>
+                Acesse por <Link href={course.link}>Link</Link>
               </div>
             </div>
           </div>

@@ -10,8 +10,7 @@ import api from '../../services/api';
 
 import { MaxContent, Associated, SearchBar } from '../../styles/styled/Associado/styles';
 
-import { FaAddressCard, FaCalendarAlt, FaPhoneAlt, FaEnvelope, FaBook, FaSearch } from 'react-icons/fa';
-import BackButton from '../../components/BackButton';
+import { FaAddressCard, FaCalendarAlt, FaPhoneAlt, FaEnvelope, FaBook } from 'react-icons/fa';
 
 interface AssociateProps {
   id: string,
@@ -44,7 +43,7 @@ interface AssociateProps {
 }
 
 function Associate<AssociateProps>({ associate }: any) {
-  const router = useRouter()
+  // const router = useRouter()
   // const { id } = router.query
 
   return (

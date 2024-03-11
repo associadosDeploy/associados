@@ -56,10 +56,10 @@ function Home() {
 
             <div className="content_carousel">
               <Partner>
-                <a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
-              <Partner><a href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></a></Partner>
-              <Partner><a href="https://instagram.com/zenatti.consultoriapericial?igshid=OGQ5ZDc2ODk2ZA=="><img src="parceiro3.jpeg" alt="Parceiro 3" /></a></Partner>
-              <Partner><a href="https://www.instagram.com/sabinopericias/"><img src="logo-sabino.png" alt="Parceiro 4" /></a></Partner>
+                <Link href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></Link></Partner>
+              <Partner><Link href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></Link></Partner>
+              <Partner><Link href="https://instagram.com/zenatti.consultoriapericial?igshid=OGQ5ZDc2ODk2ZA=="><img src="parceiro3.jpeg" alt="Parceiro 3" /></Link></Partner>
+              <Partner><Link href="https://www.instagram.com/sabinopericias/"><img src="logo-sabino.png" alt="Parceiro 4" /></Link></Partner>
             </div>
 
             <div>
@@ -74,10 +74,10 @@ function Home() {
 
             <div>
               <Partner>
-                <a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
-              <Partner><a href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></a></Partner>
-              <Partner> <a href="https://instagram.com/zenatti.consultoriapericial?igshid=OGQ5ZDc2ODk2ZA=="><img src="parceiro3.jpeg" alt="Parceiro 3" /></a></Partner>
-              <Partner><a href="https://www.instagram.com/sabinopericias/"><img src="logo-sabino.png" alt="Parceiro 4" /></a></Partner>
+                <Link href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></Link></Partner>
+              <Partner><Link href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></Link></Partner>
+              <Partner> <Link href="https://instagram.com/zenatti.consultoriapericial?igshid=OGQ5ZDc2ODk2ZA=="><img src="parceiro3.jpeg" alt="Parceiro 3" /></Link></Partner>
+              <Partner><Link href="https://www.instagram.com/sabinopericias/"><img src="logo-sabino.png" alt="Parceiro 4" /></Link></Partner>
             </div>
 
             <div>
@@ -92,17 +92,17 @@ function Home() {
 
             <div>
               {indexSelect === 0 && (
-                <Partner><a href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></a></Partner>
+                <Partner><Link href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></Link></Partner>
               )}
 
               {indexSelect === 1 && (
-                <Partner><a href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></a></Partner>
+                <Partner><Link href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></Link></Partner>
               )}
               {indexSelect === 2 && (
-                <Partner> <a href="https://instagram.com/zenatti.consultoriapericial?igshid=OGQ5ZDc2ODk2ZA=="><img src="parceiro3.jpeg" alt="Parceiro 3" /></a></Partner>
+                <Partner> <Link href="https://instagram.com/zenatti.consultoriapericial?igshid=OGQ5ZDc2ODk2ZA=="><img src="parceiro3.jpeg" alt="Parceiro 3" /></Link></Partner>
               )}
               {indexSelect === 3 && (
-                <Partner><a href="https://www.instagram.com/sabinopericias/"><img src="logo-sabino.png" alt="Parceiro 4" /></a></Partner>
+                <Partner><Link href="https://www.instagram.com/sabinopericias/"><img src="logo-sabino.png" alt="Parceiro 4" /></Link></Partner>
               )}
             </div>
 
@@ -121,7 +121,7 @@ function Home() {
           <p>Se você tem interrese de se tornar um associado, clique no botão abaixo e responda o formulário</p>
 
           <Link href="cadastro">
-            <a>Associar-se</a>
+            Associar-se
           </Link>
         </FormAssociated>
       </Associated>
