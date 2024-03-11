@@ -60,7 +60,19 @@ const Footer: React.FC = () => {
         </MaxContent>
       </TopFooter>
       <BottomFooter>
-        <span>COPYRIGHT © 2021 CODE LABZ</span>
+        <div>
+          <span>© {new Date().getFullYear()} APEJESC - Todos os direitos reservados</span>
+
+          <a href="https://www.codelabz.com.br/" style={{ 
+            display: 'flex', 
+            alignItems: 'center',
+            gap: 4, 
+
+          
+          }}>
+            Desenvolvido por : <img src="codelabz.svg" alt="codelabz" />
+          </a>
+        </div>
       </BottomFooter>
     </Container>
   );

@@ -80,16 +80,27 @@ export const TopFooter = styled.div`
 `;
 
 export const BottomFooter = styled.div`
-  display:flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   background: var(--dark-yellow);
   color: var(--white);
   padding: 0.75rem;
+ 
+  width: 100%;
 
+  > div {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
   span{
     font-weight: 500;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
   }
 `;
 
