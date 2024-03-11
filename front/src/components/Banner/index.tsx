@@ -8,11 +8,11 @@ const MenuBar: React.FC = () => {
   const [indexBanner, setIndexBanner] = useState(0);
 
   const banners = [
-    // {
-    //   img: "banner2.png",
-    //   imgCel: "banner2_cel.png",
-    //   link: "http://www.criminalistica2022.com.br/"
-    // },
+    {
+      img: "banner03.png",
+      imgCel: "bannerCell03.png",
+      link: "https://www.even3.com.br/congresso-nacional-de-criminalistica-430949/?fbclid=PAAaYbEj97HRlkXSeT_5UjYga6YUXW0o1NU0nVvkc0qGnOKeLjBi6Meixo02M"
+    },
     {
       img: "banner.jpg",
       imgCel: "banner_cel.jpg",
