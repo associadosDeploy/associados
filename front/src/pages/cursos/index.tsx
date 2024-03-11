@@ -17,7 +17,7 @@ interface CourseProps {
   avatar: string;
 }
 
-function Course<CourseProp>({ courses }) {
+function Course<CourseProp>({ courses }:any) {
 
   return (
     <ContentContainer>

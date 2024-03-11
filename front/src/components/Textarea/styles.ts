@@ -7,6 +7,7 @@ interface ContainerProps {
   isErrored: boolean;
   hidden?: boolean;
   disabled: boolean;
+  children: React.ReactNode
 }
 
 export const Content = styled.div`

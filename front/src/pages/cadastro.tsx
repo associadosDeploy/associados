@@ -21,7 +21,7 @@ function Course() {
   const [formComplete, setFormComplete] = useState(false);
 
   const handleSubmit = useCallback(
-    async (data) => {
+    async (data:any) => {
       try {
         formRef.current?.setErrors({});
 

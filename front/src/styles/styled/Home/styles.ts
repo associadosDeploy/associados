@@ -4,7 +4,12 @@ import { Content } from '../../../components/ContentMax/styles';
 
 export const MaxContent = styled(Content)``;
 
-export const AboutUs = styled.div`
+interface Params{
+  children: React.ReactNode
+  id?:string
+  className?:string
+}
+export const AboutUs = styled.div<Params>`
   display: flex;
   background: #fff;
   padding: 5rem 1rem;
@@ -75,7 +80,7 @@ export const AboutUs = styled.div`
   }
   `;
 
-export const Partners = styled.div`
+export const Partners = styled.div<Params>`
   display: flex;
   flex-direction: column;
   justify-content:center;
@@ -152,7 +157,7 @@ export const Partners = styled.div`
   }
 `;
 
-export const PartnersCarousel = styled.div`
+export const PartnersCarousel = styled.div<Params>`
   display:flex;
   align-items:center;
   justify-content:center;

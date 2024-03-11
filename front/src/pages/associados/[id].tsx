@@ -43,9 +43,9 @@ interface AssociateProps {
   valid: number,
 }
 
-function Associate<AssociateProps>({ associate }) {
+function Associate<AssociateProps>({ associate }: any) {
   const router = useRouter()
-  const { id } = router.query
+  // const { id } = router.query
 
   return (
     <>
@@ -97,7 +97,7 @@ function Associate<AssociateProps>({ associate }) {
 }
 
 
-Associate.getInitialProps = async ({ query }) => {
+Associate.getInitialProps = async ({ query }:any) => {
   let associate = {};
 
   const { id } = query;

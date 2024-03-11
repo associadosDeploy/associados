@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 interface LoadingComponent {
   color?: string;
+  children: React.ReactNode
 }
 
 const RotateAnimation = keyframes`

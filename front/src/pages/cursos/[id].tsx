@@ -20,7 +20,7 @@ interface CourseProps {
   avatar: string;
 }
 
-function Course<CourseProp>({ course }) {
+function Course<CourseProp>({ course }:any) {
 
   return (
     <>
@@ -56,7 +56,7 @@ function Course<CourseProp>({ course }) {
   );
 }
 
-Course.getInitialProps = async ({ query }) => {
+Course.getInitialProps = async ({ query }:any) => {
   let course = {};
 
   const { id } = query;
