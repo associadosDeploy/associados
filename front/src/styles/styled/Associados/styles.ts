@@ -84,124 +84,128 @@ export const SearchBar = styled.div`
 export const Associated = styled.div`
   display: flex;
   flex-direction: column;
-  align-items:center;
-  justify-content:center;
   margin-top: 1rem;
   transition: transform 0.5s;
 
-  > div {
-    display: flex;
-    width: 100%;
-    margin: 1rem 0;
-    cursor: pointer;
-    box-shadow: -4px 5px 5px rgba(0, 0, 0, 0.10);
-    width: 100%;
-    
+  a {
+    width: '100%';
     > div {
       display: flex;
-      flex-direction: column;
-      justify-content:center;
-      color: #555;
-
-      img {
-        min-width: 200px;
-        max-width: 200px;
-        min-height: 315px;
-        max-height: 315px;
-        background-size: cover;
-        transition: opacity 0.5s;
-        margin: 0;
-      }
-
-      div.image-not-found {
-        min-width: 200px;
-        max-width: 200px;
-        min-height: 315px;
-        max-height: 315px;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #eee;
-      }
-
-      h1 {
-        color: var(--dark-yellow);
-      }
+      width: 100%;
+      margin: 1rem 0;
+      cursor: pointer;
+      border: 1px solid #eee;
+      box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.10);
+      width: 100%;
       
       > div {
         display: flex;
-        flex-direction: row;
-        margin: 1rem 0;
-        width:100%;
-
-        span {  
+        flex-direction: column;
+        justify-content:center;
+        color: #555;
+  
+        img {
+          min-width: 200px;
+          max-width: 200px;
+          min-height: 315px;
+          max-height: 315px;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          transition: opacity 0.5s;
+          margin: 0;
+        }
+  
+        div.image-not-found {
+          min-width: 200px;
+          max-width: 200px;
+          min-height: 315px;
+          max-height: 315px;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #eee;
+        }
+  
+        h1 {
+          color: var(--dark-yellow);
+        }
+        
+        > div {
           display: flex;
           flex-direction: row;
-          align-items:center;
+          margin: 1rem 0;
           width:100%;
-          word-break: break-all;
-          
+  
+          span {  
+            display: flex;
+            flex-direction: row;
+            align-items:center;
+            width:100%;
+            word-break: break-all;
+            
+            svg {
+              margin-right: 0.5rem;
+            }
+          }
+  
+        }
+        
+        p {  
           svg {
             margin-right: 0.5rem;
           }
         }
-
       }
-      
-      p {  
-        svg {
-          margin-right: 0.5rem;
+  
+      &:hover{
+  
+        img{
+          opacity: 0.75;
+        }
+        
+        > div:last-child {
+          border-color: var(--yellow);
         }
       }
-    }
-
-    &:hover{
-
-      img{
-        opacity: 0.75;
-      }
-      
+  
       > div:last-child {
-        border-color: var(--yellow);
+        flex:1;
+        padding: 1rem 2rem;
+        border: 1px solid #eee;
+        transition: border-color 0.5s;
+        border-left: 0;
       }
-    }
-
-    > div:last-child {
-      flex:1;
-      padding: 1rem 2rem;
-      border: 1px solid #eee;
-      transition: border-color 0.5s;
-      border-left: 0;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      max-width:500px;
-      max-height:350px;
-
-      background: #eee;
-      background-size: cover;
-    }
-
-    a {
-      color: var(--white);
-      background: var(--light-black);
-      padding: 1rem 2rem;
-      margin-top: 1rem;
-      font-weight: 700;
-      align-self: flex-start;
-      transition: background-color 0.5s, color 0.5s;
-    }
-
-    a:hover {
-      background: var(--yellow);
-      color: var(--light-black);
-    }
-
-    p {
-      margin-top: 1rem;
+  
+      img {
+        width: 100%;
+        height: 100%;
+        max-width:500px;
+        max-height:350px;
+  
+        background: #eee;
+        background-size: cover;
+      }
+  
+      a {
+        color: var(--white);
+        background: var(--light-black);
+        padding: 1rem 2rem;
+        margin-top: 1rem;
+        font-weight: 700;
+        align-self: flex-start;
+        transition: background-color 0.5s, color 0.5s;
+      }
+  
+      a:hover {
+        background: var(--yellow);
+        color: var(--light-black);
+      }
+  
+      p {
+        margin-top: 1rem;
+      }
     }
   }
 
