@@ -50,27 +50,29 @@ function Home() {
           <h1>Parceiros</h1>
 
           <PartnersCarousel className="partners_web">
-            <div>
+            {/* <div>
               <FaAngleLeft color="#A78B3D" size={40} />
-            </div>
+            </div> */}
 
             <div className="content_carousel">
+
               <Partner>
                 <Link href="https://aacrimesc.org.br/"><img src="parceiro1.png" alt="Parceiro 1" /></Link></Partner>
               <Partner><Link href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></Link></Partner>
               <Partner><Link href="https://instagram.com/zenatti.consultoriapericial?igshid=OGQ5ZDc2ODk2ZA=="><img src="parceiro3.jpeg" alt="Parceiro 3" /></Link></Partner>
               <Partner><Link href="https://www.instagram.com/sabinopericias/"><img src="logo-sabino.png" alt="Parceiro 4" /></Link></Partner>
+              <Partner><Link href="https://www.instagram.com/sabinopericias/"><img src="logo_index.jpeg" alt="Parceiro 5" /></Link></Partner>
             </div>
 
-            <div>
+            {/* <div>
               <FaAngleRight color="#A78B3D" size={40} />
-            </div>
+            </div> */}
           </PartnersCarousel>
 
           <PartnersCarousel className="partners_tablet">
-            <div>
+            {/* <div>
               <FaAngleLeft color="#A78B3D" size={40} />
-            </div>
+            </div> */}
 
             <div>
               <Partner>
@@ -78,11 +80,13 @@ function Home() {
               <Partner><Link href="https://www.instagram.com/sjmpericias/?utm_medium=copy_link"><img src="parceiro2.jpeg" alt="Parceiro 2" /></Link></Partner>
               <Partner> <Link href="https://instagram.com/zenatti.consultoriapericial?igshid=OGQ5ZDc2ODk2ZA=="><img src="parceiro3.jpeg" alt="Parceiro 3" /></Link></Partner>
               <Partner><Link href="https://www.instagram.com/sabinopericias/"><img src="logo-sabino.png" alt="Parceiro 4" /></Link></Partner>
+              <Partner><Link href="https://www.instagram.com/sabinopericias/"><img src="logo-sabino.png" alt="Parceiro 4" /></Link></Partner>
+              <Partner><Link href="https://www.instagram.com/sabinopericias/"><img src="logo_index.jpeg" alt="Parceiro 5" /></Link></Partner>
             </div>
 
-            <div>
+            {/* <div>
               <FaAngleRight color="#A78B3D" size={40} />
-            </div>
+            </div> */}
           </PartnersCarousel>
 
           <PartnersCarousel className="partners_mobile">
@@ -104,6 +108,10 @@ function Home() {
               {indexSelect === 3 && (
                 <Partner><Link href="https://www.instagram.com/sabinopericias/"><img src="logo-sabino.png" alt="Parceiro 4" /></Link></Partner>
               )}
+              {indexSelect === 4 && (
+                 <Partner><Link href="https://www.instagram.com/sabinopericias/"><img src="logo_index.jpeg" alt="Parceiro 5" /></Link></Partner>
+              )}
+            
             </div>
 
             <div onClick={() => setIndexSelect(indexSelect + 1)}>
