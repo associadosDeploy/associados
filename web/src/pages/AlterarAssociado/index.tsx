@@ -3,9 +3,10 @@ import React, { useEffect, useRef, useCallback, useState } from 'react';
 
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
-import { Link, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 
 import * as Yup from 'yup';
+import { FaSpinner } from 'react-icons/fa';
 import Menu from '../../components/Menu';
 
 import Input from '../../components/Input';
@@ -49,9 +50,9 @@ interface Transaction {
 const AlterarAssociado: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const [associate, setAssociate] = useState<Transaction>();
+  const [associate] = useState<Transaction>();
   const { addToast } = useToast();
-
+  const [isLoading, setIsLoading]= useState(false)
   const { id } = useParams<Record<string, string>>();
 
   const selectValidOptions = [
@@ -149,33 +150,33 @@ const AlterarAssociado: React.FC = () => {
     loadAssociate();
   }, [id]);
 
-  async function handleChangeAvatar(event: React.ChangeEvent<HTMLInputElement>) {
-
+  const handleChangeAvatar = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsLoading(true)
     if (event.target.files && event.target.files[0]) {
       try {
         const data = new FormData();
 
         data.append('avatar', event.target.files[0]);
-        data.append('id', id);
 
-        await api.patch('/associates/avatar', data);
+        await api.patch(`/associates/avatar/${id}`, data);
 
         addToast({
           type: 'success',
           title: 'Alteração da foto',
           description: 'Foto do associado foi alterada com sucesso !',
         });
-
+        setIsLoading(false)
       } catch (e) {
+        setIsLoading(false)
         addToast({
           type: 'error',
-          title: 'Erro na alteração da imaFotogem',
-          description: 'Ocorreu um erro ao alterar a foto do associade.',
+          title: 'Erro na alteração da foto',
+          description: 'Ocorreu um erro ao alterar a foto do associado.',
         });
       }
     }
   }
-
+,[addToast, id])
   return (
     <Container>
       <Menu />
@@ -253,6 +254,18 @@ const AlterarAssociado: React.FC = () => {
             <Button type="submit" color="#2A2A29">Alterar</Button>
           </Form>
         </ContentContainer>
+
+        {isLoading &&
+          (
+            <div style={{ position: 'absolute', width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.2)', top: 0, left: 0}}>
+              <Loading>
+                <h1>
+                  Carregando
+                </h1>
+                <FaSpinner size={25} />
+              </Loading>
+            </div>
+          ) }
       </Content>
     </Container>
   );

@@ -18,25 +18,25 @@ interface RequestWithUser extends Request {
   };
 }
 
-coursesRouter.get('/', async (request, response: Response) => {
-  const coursesRepository = getRepository(Courses);
+// coursesRouter.get('/', async (request, response: Response) => {
+//   const coursesRepository = getRepository(Courses);
 
-  const courses = await coursesRepository.find();
+//   const courses = await coursesRepository.find();
 
-  const courseWithUrlAvatar = await Promise.all(
-    courses.map(async course => {
-      return {
-        ...course,
+//   const courseWithUrlAvatar = await Promise.all(
+//     courses.map(async course => {
+//       return {
+//         ...course,
 
-        urlAvatar: course.avatar
-          ? `${process.env.APP_URL}/files/${course.avatar}`
-          : null,
-      };
-    }),
-  );
+//         urlAvatar: course.avatar
+//           ? `${process.env.APP_URL}/files/${course.avatar}`
+//           : null,
+//       };
+//     }),
+//   );
 
-  return response.json(courseWithUrlAvatar);
-});
+//   return response.json(courseWithUrlAvatar);
+// });
 
 coursesRouter.get('/:id', async (request, response: Response) => {
   const { id } = request.params;
@@ -106,7 +106,7 @@ coursesRouter.put(
     });
 
     if (!checkCourseExists) {
-      throw new AppError('Associate not found');
+      throw new AppError('Course not found');
     }
 
     const courses = coursesRepository.save({

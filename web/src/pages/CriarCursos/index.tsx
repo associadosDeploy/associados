@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, {  useRef, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Form } from '@unform/web';
@@ -12,7 +12,7 @@ import ImageInput from '../../components/ImageInput';
 import Textarea from '../../components/Textarea';
 import Button from '../../components/Button';
 
-import Loading from '../../components/Loading';
+// import Loading from '../../components/Loading';
 import api from '../../services/api';
 
 import { useToast } from '../../hooks/toast';
@@ -31,9 +31,11 @@ const CriarCursos: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
   const history = useHistory();
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = useCallback(async (data: courseFormData) => {
     try {
+      setIsLoading(true)
       formRef.current?.setErrors({});
 
       const schema = Yup.object().shape({
@@ -56,24 +58,27 @@ const CriarCursos: React.FC = () => {
       }
       const newData = new FormData();
       newData.append('avatar', data.avatar);
-      newData.append('link', data.link);
-      newData.append('title', data.title);
-      newData.append('description', data.description);
-      await api.post('/courses', newData);
+      // newData.append('link', data.link);
+      // newData.append('title', data.title);
+      // newData.append('description', data.description);
+      const response = await api.post('/files', newData);
+      if(response){
+        await api.post('/courses', {...data,avatar: response.data.path});
+      }
 
       addToast({
         type: 'success',
         title: 'Curso Criado',
         description: 'O curso foi criado com sucesso',
       });
-
+      setIsLoading(false)
       history.push('/cursos');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
 
         formRef.current?.setErrors(errors);
-
+        setIsLoading(false)
         return;
       }
 
@@ -100,7 +105,7 @@ const CriarCursos: React.FC = () => {
             <Input name="link" placeholder="Digite o link do curso" label="Link" />
             <Textarea name="description" label="Descrição" placeholder="Digite o informações do curso" />
 
-            <Button type="submit" color="#2A2A29">Criar</Button>
+            <Button type="submit" color="#2A2A29" disabled={isLoading}>{isLoading ?'Carregando' : 'Criar'}</Button>
           </Form>
         </ContentContainer>
 

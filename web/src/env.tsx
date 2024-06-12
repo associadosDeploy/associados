@@ -1,5 +1,5 @@
 /* eslint-disable import/no-mutable-exports */
-const development = true;
+const development = false;
 
 let URL: string;
 let URL_BACKEND: string;
@@ -8,8 +8,8 @@ if (development) {
   URL = 'http://localhost:3000';
   URL_BACKEND = 'http://localhost:3333';
 } else {
-  URL = 'http://localhost:3000';
-  URL_BACKEND = 'http://localhost:3333';
+  URL = 'https://www.apjesc.com.br';
+  URL_BACKEND = 'https://associados-fastify-api.onrender.com';
 }
 
 export { URL, URL_BACKEND };

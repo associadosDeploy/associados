@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useCallback, useState } from 'react';
 
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
-import { Link, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 
 import * as Yup from 'yup';
+import { FaSpinner } from 'react-icons/fa';
 import Menu from '../../components/Menu';
 
 import Input from '../../components/Input';
@@ -34,6 +35,7 @@ const AlterarCurso: React.FC = () => {
   const { addToast } = useToast();
 
   const { id } = useParams<Record<string, string>>();
+  const [isLoading, setIsLoading]= useState(false)
 
   useEffect(() => {
     async function loadCouse(): Promise<void> {
@@ -49,6 +51,7 @@ const AlterarCurso: React.FC = () => {
   const handleSubmit = useCallback(
     async (data) => {
       try {
+
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -86,32 +89,34 @@ const AlterarCurso: React.FC = () => {
     [addToast, id],
   );
 
-  async function handleChangeAvatar(event: React.ChangeEvent<HTMLInputElement>) {
-
+  const handleChangeAvatar = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) =>{
+    setIsLoading(true)
     if (event.target.files && event.target.files[0]) {
       try {
         const data = new FormData();
 
         data.append('avatar', event.target.files[0]);
-        data.append('id', id);
 
-        await api.patch('/courses/avatar', data);
+        await api.patch(`/courses/avatar/${id}`, data);
 
         addToast({
           type: 'success',
-          title: 'Alteração da logo',
+          title: 'Alteração da foto',
           description: 'Imagem do associado foi alterada com sucesso !',
         });
 
+        setIsLoading(false)
       } catch (e) {
+        setIsLoading(false)
         addToast({
           type: 'error',
           title: 'Erro na alteração da imagem',
-          description: 'Ocorreu um erro ao alterar imagem do associade.',
+          description: 'Ocorreu um erro ao alterar imagem do curso.',
         });
       }
     }
   }
+,[addToast,id])
 
   return (
     <Container>
@@ -123,7 +128,6 @@ const AlterarCurso: React.FC = () => {
 
           <Form initialData={course} ref={formRef} onSubmit={handleSubmit}>
             <ImageInput name="avatar" onChangeCapture={handleChangeAvatar} />
-
             <Input name="title" placeholder="Digite o Titulo do curso" label="Titulo" />
             <Input name="link" placeholder="Digite o link do curso" label="Link" />
             <Textarea name="description" label="Descrição" placeholder="Digite o informações do curso" />
@@ -132,16 +136,17 @@ const AlterarCurso: React.FC = () => {
           </Form>
         </ContentContainer>
 
-        {/* {loading ?
+        {isLoading &&
           (
-            <Loading>
-              <h1>
-                Carregando
-              </h1>
-              <FaSpinner size={25} />
-            </Loading>
-          ) :
-          ()} */}
+            <div style={{ position: 'absolute', width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.2)', top: 0, left: 0}}>
+              <Loading>
+                <h1>
+                  Carregando
+                </h1>
+                <FaSpinner size={25} />
+              </Loading>
+            </div>
+          ) }
       </Content>
     </Container>
   );

@@ -9,7 +9,7 @@ if (development) {
   URL_BACKEND = 'http://localhost:3333';
 } else {
   // URL = 'http://localhost:3000';
-  URL_BACKEND = 'https://api.apjesc.com.br';
+  URL_BACKEND = 'https://associados-fastify-api.onrender.com';
 }
 
 export { URL_BACKEND };

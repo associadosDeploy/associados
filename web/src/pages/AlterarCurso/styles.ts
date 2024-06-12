@@ -32,7 +32,7 @@ export const ContentContainer = styled.div`
   max-width: 1050px;
   width: 100%;
   margin: 3rem 0;
-
+  position: relative;
   h1 {
     text-align: center;
     margin-bottom:2rem;
