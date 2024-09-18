@@ -9,9 +9,9 @@ const MenuBar: React.FC = () => {
 
   const banners = [
     {
-      img: "banner03.png",
-      imgCel: "bannerCell03.png",
-      link: "https://www.even3.com.br/congresso-nacional-de-criminalistica-430949/?fbclid=PAAaYbEj97HRlkXSeT_5UjYga6YUXW0o1NU0nVvkc0qGnOKeLjBi6Meixo02M"
+      img: "banner4.jpeg",
+      imgCel: "banner4.jpeg",
+      link: "https://www.enqfor.org.br/"
     },
     {
       img: "banner.jpg",
