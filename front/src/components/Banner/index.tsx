@@ -9,6 +9,11 @@ const MenuBar: React.FC = () => {
 
   const banners = [
     {
+      img: "Molinari_BannerSite.png",
+      imgCel: "Molinari_BannerSite.png",
+      link: "https://incendioautomotivo.com.br/"
+    },
+    {
       img: "banner4.jpeg",
       imgCel: "banner4.jpeg",
       link: "https://www.enqfor.org.br/"
@@ -25,6 +30,8 @@ const MenuBar: React.FC = () => {
         <FaArrowLeft size={20} color="#fff" onClick={() => {
           if (indexBanner - 1 >= 0) {
             setIndexBanner(indexBanner - 1)
+          } else {
+            setIndexBanner(banners.length - 1)
           }
         }} />
       </div>
@@ -42,6 +49,8 @@ const MenuBar: React.FC = () => {
         <FaArrowRight size={20} color="#fff" onClick={() => {
           if (indexBanner + 1 <= banners.length - 1) {
             setIndexBanner(indexBanner + 1)
+          } else {
+            setIndexBanner(0)
           }
         }} />
       </div>

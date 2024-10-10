@@ -15,6 +15,7 @@ export const Container = styled.div`
   img{
     cursor:pointer;
     width:100%;
+    height: 400px;
     transition: opacity 0.5s;
   }
 
@@ -30,6 +31,7 @@ export const Container = styled.div`
   @media(max-width: 530px){
     .banner_mob{
       display:flex;
+      min-height: 300px;
     }
 
     .banner_web{
