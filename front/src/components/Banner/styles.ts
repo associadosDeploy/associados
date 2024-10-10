@@ -37,5 +37,9 @@ export const Container = styled.div`
     .banner_web{
       display:none;
     }
+
+    img{
+      height: 200px;
+    }
   }
 `;
