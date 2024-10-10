@@ -9,8 +9,8 @@ const MenuBar: React.FC = () => {
 
   const banners = [
     {
-      img: "Molinari_BannerSite.png",
       imgCel: "Molinari_BannerSite.png",
+      img: "Molinari_BannerSite.png",
       link: "https://incendioautomotivo.com.br/"
     },
     {

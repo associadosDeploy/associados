@@ -14,8 +14,8 @@ export const Container = styled.div`
 
   img{
     cursor:pointer;
-    width:100%;
     height: 400px;
+    width:100%;
     transition: opacity 0.5s;
   }
 
@@ -40,6 +40,7 @@ export const Container = styled.div`
 
     img{
       height: 200px;
+      
     }
   }
 `;
