@@ -14,9 +14,9 @@ const MenuBar: React.FC = () => {
       link: "https://incendioautomotivo.com.br/"
     },
     {
-      img: "banner4.jpeg",
-      imgCel: "banner4.jpeg",
-      link: "https://www.enqfor.org.br/"
+      img: "banner04.jpeg",
+      imgCel: "banner04.jpeg",
+      link: "https://interforensics.com/cicf2025"
     },
     {
       img: "banner.jpg",
