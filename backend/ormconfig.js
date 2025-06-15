@@ -1,6 +1,5 @@
 require('dotenv/config');
 
-
 console.log('process.env.POSTGRES_HOST', process.env.POSTGRES_HOST);
 console.log('process.env.POSTGRES_USER', process.env.POSTGRES_USER);
 console.log('process.env.POSTGRES_PASSWORD', process.env.POSTGRES_PASSWORD);
@@ -15,13 +14,9 @@ module.exports = {
   database: process.env.POSTGRES_DATABASE,
   ssl: { rejectUnauthorized: false },
   synchronize: true,
-  entities: [
-    './src/models/*.ts'
-  ],
-  migrations: [
-    './src/database/migrations/*.ts'
-  ],
+  entities: ['./src/models/*.ts'],
+  migrations: ['./src/database/migrations/*.ts'],
   cli: {
-    migrationsDir: './src/database/migrations'
-  }
-}
+    migrationsDir: './src/database/migrations',
+  },
+};

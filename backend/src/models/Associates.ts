@@ -94,6 +94,9 @@ class Associates extends BaseEntity {
   @Column()
   valid: number;
 
+  @Column("simple-array", { nullable: true })
+  documentLinks: string[];
+
   @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;

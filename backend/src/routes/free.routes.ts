@@ -1,12 +1,27 @@
+import multer from 'multer';
+import AWS from 'aws-sdk';
 import { Router, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-
+import fs from 'fs';
+import path from 'path';
 import Courses from '../models/Course';
 import Associates from '../models/Associates';
 
 import AppError from '../errors/AppError';
+import uploadConfig from '../config/upload';
 
 const freeRouter = Router();
+
+const s3 = new AWS.S3({
+  region: process.env.AWS_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+  },
+});
+
+// Cria um middleware de upload usando o storage do seu multer config
+const upload = multer(uploadConfig);
 
 freeRouter.get('/healthcheck', async (request: Request, response: Response) => {
   return response.status(200).json({ ok: true });
@@ -112,69 +127,140 @@ freeRouter.get(
   },
 );
 
-freeRouter.post('/associate', async (request: Request, response: Response) => {
-  let { oab } = request.body;
-  const {
-    state,
-    city,
-    cep,
-    cpf,
-    birthDate,
-    name,
-    rg,
-    rg_uf,
-    emissor,
-    shipping_date,
-    naturalness,
-    naturalness_uf,
-    address,
-    email_data,
-    profession,
-    education,
-    specialization,
-    phone,
-    email_profession,
-    acting,
-  } = request.body;
+freeRouter.post(
+  '/associate',
+  upload.array('documents'),
+  async (request: Request, response: Response) => {
+    try {
+      // 1. Extrai todos os campos do formulário
+      let { oab } = request.body;
+      const {
+        state,
+        city,
+        cep,
+        cpf,
+        birthDate,
+        name,
+        rg,
+        rg_uf,
+        emissor,
+        shipping_date,
+        naturalness,
+        naturalness_uf,
+        address,
+        email_data,
+        profession,
+        education,
+        specialization,
+        phone,
+        email_profession,
+        acting,
+      } = request.body;
 
-  const date = new Date();
-  const affiliation = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+      // 2. Gera a data de filiação (affiliation) no formato DD/MM/YYYY
+      const now = new Date();
+      const day = now.getDate().toString().padStart(2, '0');
+      const month = (now.getMonth() + 1).toString().padStart(2, '0');
+      const year = now.getFullYear();
+      const affiliation = `${day}/${month}/${year}`;
 
-  const associateRepository = getRepository(Associates);
+      const associateRepository = getRepository(Associates);
 
-  if (!oab) {
-    oab = '';
-  }
+      if (!oab) {
+        oab = '';
+      }
 
-  const associate = associateRepository.create({
-    oab,
-    state,
-    city,
-    cep,
-    cpf,
-    affiliation,
-    birthDate,
-    name,
-    rg,
-    rg_uf,
-    emissor,
-    shipping_date,
-    naturalness,
-    naturalness_uf,
-    address,
-    email_data,
-    profession,
-    education,
-    specialization,
-    phone,
-    email_profession,
-    acting,
-    valid: 0,
-  });
+      /**
+       * 3. Cria a instância inicial do Associate (sem documentLinks)
+       *    Supondo que a entidade Associates tenha uma coluna `documentLinks: string[]`
+       */
+      const associate = associateRepository.create({
+        oab,
+        state,
+        city,
+        cep,
+        cpf,
+        affiliation,
+        birthDate: new Date(birthDate),
+        name,
+        rg,
+        rg_uf,
+        emissor,
+        shipping_date: new Date(shipping_date),
+        naturalness,
+        naturalness_uf,
+        address,
+        email_data,
+        profession,
+        education,
+        specialization,
+        phone,
+        email_profession,
+        acting,
+        valid: 0,
+        documentLinks: [], // inicializado vazio
+      });
 
-  await associateRepository.save(associate);
+      // 4. Salva o associate para obter o ID
+      await associateRepository.save(associate);
 
-  return response.json(associate);
-});
+      // 5. Recupera os arquivos que foram armazenados em disco
+      const files = request.files as Express.Multer.File[];
+      const documentLinks: string[] = [];
+
+      if (files && files.length > 0) {
+        // Cria um array de Promises para fazer o upload de cada arquivo
+        const uploadPromises = files.map(file => {
+          const tempFilePath = file.path;
+
+          const keyAws = `associates/${associate.id}/${Date.now()}_${file.originalname}`;
+          const fileStream = fs.createReadStream(tempFilePath);
+
+          const params: AWS.S3.PutObjectRequest = {
+            Bucket: process.env.AWS_BUCKET_NAME!,
+            Key: keyAws,
+            Body: fileStream,
+            ContentType: file.mimetype,
+            ACL: 'public-read',
+          };
+
+          // Retorna a Promise de upload + remoção do arquivo temporário
+          return s3
+            .upload(params)
+            .promise()
+            .then(uploadResult => {
+              // Guarda a URL retornada pelo S3
+              documentLinks.push(uploadResult.Location);
+
+              // Remove o arquivo temporário (não bloqueante)
+              fs.unlink(tempFilePath, err => {
+                if (err) {
+                  console.warn(
+                    `Falha ao excluir arquivo temporário ${tempFilePath}:`,
+                    err,
+                  );
+                }
+              });
+            });
+        });
+
+        // Aguarda todas as Promises de upload
+        await Promise.all(uploadPromises);
+      }
+
+      // 6. Atualiza o associate com os URLs dos documentos no S3
+      associate.documentLinks = documentLinks;
+      await associateRepository.save(associate);
+
+      return response.status(201).json(associate);
+    } catch (error: any) {
+      console.error('Erro na rota /free/associate:', error);
+      return response.status(500).json({
+        message: 'Erro ao criar associate e fazer upload dos documentos',
+        error: error.message,
+      });
+    }
+  },
+);
 
 export default freeRouter;

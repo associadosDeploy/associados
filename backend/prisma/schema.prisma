@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model associates {
+  id               String   @id(map: "PK_63bee9673682e211433a8b40ed0") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  user_id          String?  @db.Uuid
+  name             String   @db.VarChar
+  rg               String   @db.VarChar
+  emissor          String   @db.VarChar
+  rg_uf            String   @db.VarChar
+  shipping_date    String   @db.VarChar
+  naturalness      String   @db.VarChar
+  naturalness_uf   String   @db.VarChar
+  address          String   @db.VarChar
+  email_data       String   @db.VarChar
+  profession       String   @db.VarChar
+  education        String   @db.VarChar
+  specialization   String   @db.VarChar
+  email_profession String   @db.VarChar
+  acting           String   @db.VarChar
+  avatar           String?  @db.VarChar
+  created_at       DateTime @default(now()) @db.Timestamp(6)
+  updated_at       DateTime @default(now()) @db.Timestamp(6)
+  valid            Int
+  visible          Boolean  @default(true)
+  cpf              String   @db.VarChar
+  birthDate        String   @db.VarChar
+  phone            String   @db.VarChar
+  affiliation      String   @db.VarChar
+  city             String   @db.VarChar
+  state            String   @db.VarChar
+  cep              String   @db.VarChar
+  oab              String   @db.VarChar
+  users            users?   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_72045e04f453d1464959416dbeb")
+}
+
+model course {
+  id          String   @id(map: "PK_bf95180dd756fd204fb01ce4916") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  user_id     String   @db.Uuid
+  link        String   @db.VarChar
+  title       String   @db.VarChar
+  description String   @db.VarChar
+  avatar      String?  @db.VarChar
+  created_at  DateTime @default(now()) @db.Timestamp(6)
+  updated_at  DateTime @default(now()) @db.Timestamp(6)
+  users       users    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_bb2c8374d6f04bf9301895d1b33")
+}
+
+model migrations {
+  id        Int    @id(map: "PK_8c82d7f526340ab734260ea46be") @default(autoincrement())
+  timestamp BigInt
+  name      String @db.VarChar
+}
+
+model users {
+  id         String       @id(map: "PK_a3ffb1c0c8416b9fc6f907b7433") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name       String       @db.VarChar
+  email      String       @db.VarChar
+  password   String       @db.VarChar
+  created_at DateTime     @default(now()) @db.Timestamp(6)
+  updated_at DateTime     @default(now()) @db.Timestamp(6)
+  associates associates[]
+  course     course[]
+}
